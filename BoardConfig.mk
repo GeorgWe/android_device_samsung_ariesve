@@ -148,11 +148,22 @@ BOARD_FLASH_BLOCK_SIZE := 4096
 BOARD_USES_MMCUTILS := true
 BOARD_HAS_NO_MISC_PARTITION := true
 BOARD_HAS_SDCARD_INTERNAL := true
-#TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
+
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/ariesve/recovery/recovery_keys.c
 BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/ariesve/recovery/graphics.c
 TARGET_RECOVERY_INITRC := device/samsung/ariesve/config/init.recovery.rc
 TARGET_RECOVERY_FSTAB := device/samsung/ariesve/recovery.fstab
+
+# Additional TWRP Stuff
+DEVICE_RESOLUTION := 480x800
+TW_INTERNAL_STORAGE_PATH := "/sdcard"
+TW_INTERNAL_STORAGE_MOUNT_POINT := "sdcard"
+TW_EXTERNAL_STORAGE_PATH := "/external_sd"
+TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
+TW_DEFAULT_EXTERNAL_STORAGE := true
+TW_FLASH_FROM_STORAGE := true
+TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
+
 # Enable below line if compiling for a recovery version before 6.0.1.2
 # BOARD_UMS_LUNFILE := /sys/devices/platform/usb_mass_storage/lun%d/file
 # End recovery stuff
