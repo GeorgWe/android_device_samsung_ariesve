@@ -12,7 +12,7 @@ on init
     symlink /storage/sdcard1 /external_sd
     symlink /storage/sdcard1 /mnt/external_sd
 
-    insmod /lib/modules/bthid.ko
+    mkdir /mnt/usbdisk 0755 system system
 
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
@@ -33,6 +33,8 @@ on boot
     chown bluetooth bluetooth ro.bt.bdaddr_path
     chown bluetooth bluetooth /sys/devices/platform/msm_serial_hs.0/clock
     chmod 0660 /sys/devices/platform/msm_serial_hs.0/clock
+
+    chmod 0444 /sys/devices/platform/msm_hsusb/gadget/usb_state
 
     # Force Power Down
     chmod 0660 /sys/class/sec/pm/power_down
@@ -119,21 +121,6 @@ on boot
     chown system audio /sys/devices/virtual/misc/amp/sp_gainup
     chown system audio /sys/devices/virtual/misc/amp/gain_all
     chown system audio /sys/devices/virtual/misc/amp/save
-
-    # Codec Tun (QTR)
-    chown system audio /sys/class/marimba/marimba_gain/codec_tune_enable
-    chown system audio /sys/class/marimba/marimba_gain/analog_headset_rx_left_gain
-    chown system audio /sys/class/marimba/marimba_gain/analog_headset_rx_right_gain
-    chown system audio /sys/class/marimba/marimba_gain/digital_rx_left_gain
-    chown system audio /sys/class/marimba/marimba_gain/digital_rx_right_gain
-    chown system audio /sys/class/marimba/marimba_gain/digital_tx_left_gain
-    chown system audio /sys/class/marimba/marimba_gain/digital_tx_right_gain
-    chown system audio /sys/class/marimba/marimba_gain/analog_tx_left_gain
-    chown system audio /sys/class/marimba/marimba_gain/analog_tx_right_gain
-    chown system audio /sys/class/marimba/marimba_gain/auxpga_left_gain
-    chown system audio /sys/class/marimba/marimba_gain/auxpga_right_gain
-    chown system audio /sys/devices/virtual/misc/amp/gain_all
-    chown system audio /sys/class/marimba/marimba_gain/save
 
     # Remove write permissions to video related nodes
     chmod 0664 /sys/devices/virtual/graphics/fb1/hpd
