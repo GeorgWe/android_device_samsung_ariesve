@@ -127,6 +127,8 @@ TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 BOARD_VOLD_MAX_PARTITIONS := 28
 
+BOARD_MTP_DEVICE := "/dev/usb_mtp_gadget"
+
 # Boot Animation
 TARGET_BOOTANIMATION_PRELOAD := true
 TARGET_BOOTANIMATION_TEXTURE_CACHE := true
@@ -146,11 +148,12 @@ BOARD_FLASH_BLOCK_SIZE := 4096
 BOARD_USES_MMCUTILS := true
 BOARD_HAS_NO_MISC_PARTITION := true
 BOARD_HAS_SDCARD_INTERNAL := true
-
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/ariesve/recovery/recovery_keys.c
 BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/ariesve/recovery/graphics.c
 TARGET_RECOVERY_INITRC := device/samsung/ariesve/config/init.recovery.rc
 TARGET_RECOVERY_FSTAB := device/samsung/ariesve/recovery.fstab
+# Enable below line if compiling for a recovery version before 6.0.1.2
+# BOARD_UMS_LUNFILE := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
 
 # Additional TWRP Stuff
 DEVICE_RESOLUTION := 480x800
@@ -161,11 +164,9 @@ TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
 TW_DEFAULT_EXTERNAL_STORAGE := true
 TW_FLASH_FROM_STORAGE := true
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
-
-# Enable below line if compiling for a recovery version before 6.0.1.2
-# BOARD_UMS_LUNFILE := /sys/devices/platform/usb_mass_storage/lun%d/file
 # End recovery stuff
 
 TARGET_PREBUILT_KERNEL := device/samsung/ariesve/prebuilt/zImage
 
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
+
