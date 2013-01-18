@@ -96,7 +96,8 @@ BOARD_EGL_CFG := device/samsung/ariesve/config/egl.cfg
 
 USE_OPENGL_RENDERER := true
 
-TARGET_NO_HW_VSYNC := true
+TARGET_NO_HW_VSYNC := false
+TARGET_USES_ION := true
 TARGET_USES_C2D_COMPOSITION := true
 
 # QCOM webkit
@@ -126,8 +127,6 @@ TARGET_USERIMAGES_USE_EXT4 := true
 
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 BOARD_VOLD_MAX_PARTITIONS := 28
-
-BOARD_MTP_DEVICE := "/dev/usb_mtp_gadget"
 
 # Boot Animation
 TARGET_BOOTANIMATION_PRELOAD := true
