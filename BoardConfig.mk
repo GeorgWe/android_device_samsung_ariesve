@@ -96,7 +96,6 @@ BOARD_EGL_CFG := device/samsung/ariesve/config/egl.cfg
 
 USE_OPENGL_RENDERER := true
 
-TARGET_NO_HW_VSYNC := false
 TARGET_USES_ION := true
 TARGET_USES_C2D_COMPOSITION := true
 
