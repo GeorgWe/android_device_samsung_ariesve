@@ -58,9 +58,11 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/config/nvram_net.txt:system/vendor/firmware/nvram_net.txt \
     $(LOCAL_PATH)/prebuilt/get_macaddrs:system/bin/get_macaddrs
 
-# Needed to reset bootmode when leaving recovery
+# Fix rebooting in twrp
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/recovery/fix_reboot.sh:recovery/root/sbin/fix_reboot.sh
+    $(LOCAL_PATH)/recovery/rebootsystem.sh:recovery/root/sbin/rebootsystem.sh \
+    $(LOCAL_PATH)/recovery/rebootrecovery.sh:recovery/root/sbin/rebootrecovery.sh \
+    $(LOCAL_PATH)/recovery/rebootdownload.sh:recovery/root/sbin/rebootdownload.sh
 
 # Input device calibration files
 PRODUCT_COPY_FILES += \
