@@ -60,8 +60,7 @@ PRODUCT_COPY_FILES += \
 
 # Needed to reset bootmode when leaving recovery
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh \
-    $(LOCAL_PATH)/recovery/postrecoveryboot.sh:recovery/system/bin/postrecoveryboot.sh
+    $(LOCAL_PATH)/recovery/fix_reboot.sh:recovery/root/sbin/fix_reboot.sh
 
 # Input device calibration files
 PRODUCT_COPY_FILES += \
@@ -125,13 +124,25 @@ PRODUCT_PACKAGES += \
     audio.a2dp.default \
     lights.msm7x30
 
+RODUCT_PACKAGES += \
+    libgenlock \
+    libmemalloc \
+    liboverlay \
+    libqdutils \
+    libtilerenderer \
+    libI420colorconvert
+
 PRODUCT_PACKAGES += \
+    libdivxdrmdecrypt \
     libmm-omxcore \
     libOmxCore \
-    libOmxVenc \
-    libOmxVdec \
     libstagefrighthw \
-    libI420colorconvert
+    libOmxVdec \
+    libOmxVenc \
+    libOmxAacEnc \
+    libOmxAmrEnc \
+    libOmxEvrcEnc \
+    libOmxQcelp13Enc
 
 PRODUCT_PACKAGES += \
     badblocks \
@@ -142,8 +153,7 @@ PRODUCT_PACKAGES += \
     resize2fs \
     tune2fs \
     make_ext4fs \
-    setup_fs \
-    rild
+    setup_fs
 
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory \

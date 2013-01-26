@@ -159,12 +159,16 @@
          than the size of the config_autoBrightnessLevels array.
          This must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessKeyboardBacklightValues">
-        <item>20</item>
-        <item>50</item>
-        <item>100</item>
-        <item>150</item>
-        <item>255</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
     </integer-array>
+
+    <!-- Flag indicating whether we should enable automatic brightness for
+         the button and keyboard backlights. -->
+ <!--   <bool name="config_autoBrightnessButtonKeyboard">false</bool> -->
 
     <!-- Package name providing network location support. -->
     <string name="config_networkLocationProviderPackageName" translatable="false">com.google.android.location</string>
@@ -174,7 +178,7 @@
 
     <!-- Boolean indicating if current platform supports quick switch-on/off of
          Bluetooth Module -->
-    <bool name="config_bluetooth_adapter_quick_switch">false</bool>
+ <!--   <bool name="config_bluetooth_adapter_quick_switch">false</bool> -->
 
     <!-- The default iface on which to monitor data use -->
     <string name="config_datause_iface">pdp0</string>
@@ -189,13 +193,14 @@
             16 - App switch
          For example, a device with Home, Back and Menu keys would set this
          config to 7. -->
-    <integer name="config_deviceHardwareKeys">7</integer>
+ <!--   <integer name="config_deviceHardwareKeys">7</integer> -->
+
+   <!-- Timeout in MS for how long you have to long-press the back key to	
+        kill the foreground app. -->
+    <integer name="config_backKillTimeout">1500</integer>
 
     <!-- Boolean to enable stk functionality on Samsung phones -->
     <bool name="config_samsung_stk">true</bool>
 
-	<bool name="config_intrusiveNotificationLed">true</bool>
-
-    <!-- Boolean to enable electron beam animation to be shown on Qualcomm devices -->
-    <bool name="config_qualcommElectronBeam">false</bool>
+    <bool name="config_intrusiveNotificationLed">false</bool>
 </resources>

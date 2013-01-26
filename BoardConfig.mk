@@ -36,6 +36,7 @@ TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 
+# Enable NEON feature
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_USE_SCORPION_BIONIC_OPTIMIZATION := true
@@ -100,14 +101,11 @@ TARGET_USES_ION := true
 TARGET_USES_C2D_COMPOSITION := true
 
 # QCOM webkit
+ENABLE_WEBGL := true
 TARGET_FORCE_CPU_UPLOAD := true
-
 BOARD_NEEDS_MEMORYHEAPPMEM := true
-
 BOARD_USES_QCOM_HARDWARE := true
 BOARD_USES_QCOM_GPS := true
-#BOARD_USES_QCOM_AUDIO_LPA := true
-
 
 BOARD_USE_LEGACY_TOUCHSCREEN := true
 
@@ -151,7 +149,7 @@ BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/ariesve/recovery/graphics.c
 TARGET_RECOVERY_INITRC := device/samsung/ariesve/config/init.recovery.rc
 TARGET_RECOVERY_FSTAB := device/samsung/ariesve/recovery.fstab
 # Enable below line if compiling for a recovery version before 6.0.1.2
-# BOARD_UMS_LUNFILE := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
+#BOARD_UMS_LUNFILE := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
 
 # Additional TWRP Stuff
 DEVICE_RESOLUTION := 480x800
