@@ -1,2 +1,3 @@
 #!/sbin/sh
-echo 1 > /dev/block/mmcblk0p14
+sleep 1
+echo 2 > /dev/block/mmcblk0p14
