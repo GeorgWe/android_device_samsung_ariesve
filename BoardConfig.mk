@@ -36,7 +36,6 @@ TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 
-# Enable NEON feature
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_USE_SCORPION_BIONIC_OPTIMIZATION := true
@@ -55,6 +54,8 @@ TARGET_NO_INITLOGO := true
 
 TARGET_SCREEN_HEIGHT := 800
 TARGET_SCREEN_WIDTH := 480
+
+
 
 # Wifi related defines
 BOARD_WPA_SUPPLICANT_DRIVER      := WEXT
@@ -79,6 +80,7 @@ BOARD_MOBILEDATA_INTERFACE_NAME = "pdp0"
 
 BOARD_USES_LIBSECRIL_STUB := true
 
+
 BOARD_USES_QCOM_AUDIO_RESETALL := true
 BOARD_USES_LEGACY_RIL := true
 BOARD_HAVE_SAMSUNG_AUDIO := true
@@ -93,17 +95,20 @@ BOARD_FM_DEVICE := si4709
 BOARD_EGL_CFG := device/samsung/ariesve/config/egl.cfg
 
 USE_OPENGL_RENDERER := true
-
+TARGET_USES_ION := false
 TARGET_NO_HW_VSYNC := false
-TARGET_USES_ION := true
 TARGET_USES_C2D_COMPOSITION := true
 
 # QCOM webkit
 ENABLE_WEBGL := true
 TARGET_FORCE_CPU_UPLOAD := true
+
 BOARD_NEEDS_MEMORYHEAPPMEM := true
+
 BOARD_USES_QCOM_HARDWARE := true
 BOARD_USES_QCOM_GPS := true
+#BOARD_USES_QCOM_AUDIO_LPA := true
+
 
 BOARD_USE_LEGACY_TOUCHSCREEN := true
 
@@ -146,8 +151,7 @@ BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/ariesve/recovery/recove
 BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/ariesve/recovery/graphics.c
 TARGET_RECOVERY_INITRC := device/samsung/ariesve/config/init.recovery.rc
 TARGET_RECOVERY_FSTAB := device/samsung/ariesve/recovery.fstab
-# Enable below line if compiling for a recovery version before 6.0.1.2
-#BOARD_UMS_LUNFILE := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
+BOARD_UMS_LUNFILE := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
 
 # Additional TWRP Stuff
 DEVICE_RESOLUTION := 480x800
@@ -157,8 +161,6 @@ TW_EXTERNAL_STORAGE_PATH := "/external_sd"
 TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
 TW_DEFAULT_EXTERNAL_STORAGE := true
 TW_FLASH_FROM_STORAGE := true
-TW_NO_REBOOT_BOOTLOADER := true
-TW_HAS_DOWNLOAD_MODE := true
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 # End recovery stuff
 

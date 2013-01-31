@@ -8,7 +8,9 @@ on init
     export ANDROID_DATA /data
     export EXTERNAL_STORAGE /sdcard
     export SECONDARY_STORAGE /external_sd
+
     symlink /system/etc /etc
+
     mkdir /sdcard
     mkdir /external_sd
     mkdir /system
@@ -17,22 +19,38 @@ on init
     mkdir /cache
     mount /tmp /tmp tmpfs
 
+    write /sys/class/android_usb/android0/iSerial $ro.serialno
+
 on boot
+    mount debugfs /sys/kernel/debug /sys/kernel/debug
+
     ifup lo
     hostname localhost
     domainname localdomain
+
     class_start default
-    write /sys/class/android_usb/android0/iSerial $ro.serialno
+
     write /sys/class/android_usb/android0/iManufacturer Samsung
     write /sys/class/android_usb/android0/iProduct $ro.product.model
     write /sys/class/android_usb/f_mass_storage/inquiry_string $ro.product.manufacturer
 
+
 service ueventd /sbin/ueventd
     critical
 
+service console /sbin/sh
+    class core
+    console
+    disabled
+    group log
+
+on property:ro.debuggable=1
+    start console
+
 service recovery /sbin/recovery
 
-service adbd /sbin/adbd recovery
+# adbd is controlled by the persist.service.adb.enable system property
+service adbd /sbin/adbd
     disabled
 
 # Always start adbd on userdebug and eng builds

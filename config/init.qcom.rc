@@ -6,14 +6,11 @@ on init
     mkdir /storage 0050 system sdcard_r
     mkdir /storage/sdcard0 0000 system system
     mkdir /storage/sdcard1 0000 system system
-    mkdir /storage/usbdisk 0000 system system
+    # for backwards compatibility
     symlink /storage/sdcard0 /sdcard
     symlink /storage/sdcard0 /mnt/sdcard
     symlink /storage/sdcard1 /external_sd
     symlink /storage/sdcard1 /mnt/external_sd
-    symlink /storage/usbdisk /usbdisk
-    symlink /storage/usbdisk /mnt/usbdisk
-
 
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
@@ -21,6 +18,7 @@ on early-boot
 
 on boot
     mount debugfs /sys/kernel/debug /sys/kernel/debug
+
     mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
@@ -33,7 +31,8 @@ on boot
     chown bluetooth bluetooth ro.bt.bdaddr_path
     chown bluetooth bluetooth /sys/devices/platform/msm_serial_hs.0/clock
     chmod 0660 /sys/devices/platform/msm_serial_hs.0/clock
-    chmod 0444 /sys/devices/platform/msm_hsusb/gadget/usb_state
+
+	chmod 0444 /sys/devices/platform/msm_hsusb/gadget/usb_state
 
     # Force Power Down
     chmod 0660 /sys/class/sec/pm/power_down
@@ -146,6 +145,9 @@ on boot
     chown radio system sys/devices/platform/msm_sdcc.1/polling
     chown radio system sys/devices/platform/android_usb/tethering
     chown radio system sys/devices/virtual/graphics/fb1/hpd
+    chown system system sys/class/misc/notification/led
+    chown system system sys/class/misc/notification/bl_timeout
+    chown system system sys/class/misc/notification/wakelock
 
     # for silent reset
     chown system system /proc/dump_enable
@@ -156,31 +158,42 @@ on boot
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 245760
     write /sys/devices/system/cpu/cpufreq/ondemand/up_threshold 90
     write /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate 75000
+
+    chown system system /sys/devices/system/cpu/cpufreq/ondemand/boostfreq
+    chmod 0664 /sys/devices/system/cpu/cpufreq/ondemand/boostfreq
     chown system system /sys/devices/system/cpu/cpufreq/ondemand/boostpulse
+    chmod 0664 /sys/devices/system/cpu/cpufreq/ondemand/boostpulse
+    chown system system /sys/devices/system/cpu/cpufreq/ondemand/boosttime
+    chmod 0664 /sys/devices/system/cpu/cpufreq/ondemand/boosttime
     chown system system /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
-    chown system system /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor
+    chmod 0664 /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
     chown system system /sys/devices/system/cpu/cpufreq/ondemand/io_is_busy
-
-    # Don't disable dmesg access for apps
-    write /proc/sys/kernel/dmesg_restrict 0
-
-on fs
-    chmod 0666 /dev/block/mmcblk0p14
-    mount_all fstab.qcom
-    setprop ro.crypto.tmpfs_options size=128m,mode=0771,uid=1000,gid=1000
+    chmod 0664 /sys/devices/system/cpu/cpufreq/ondemand/io_is_busy
+    chown system system /sys/devices/system/cpu/cpufreq/ondemand/down_differential
+    chmod 0664 /sys/devices/system/cpu/cpufreq/ondemand/down_differential
+    chown system system /sys/devices/system/cpu/cpufreq/ondemand/powersave_bias
+    chmod 0664 /sys/devices/system/cpu/cpufreq/ondemand/powersave_bias
+    chown system system /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor
+    chmod 0664 /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor
 
 on emmc-fs
     chmod 0666 /dev/block/mmcblk0p14
+
     mount_all fstab.qcom
+
+    setprop ro.crypto.tmpfs_options size=128m,mode=0771,uid=1000,gid=1000
 
 on post-fs-data
     # create log system
     mkdir /data/log 0775 system log
+
     mkdir /data/misc/radio 0775 radio system
     mkdir /data/radio 0770 radio radio
+
     mkdir /data/misc/wifi 0770 wifi wifi
     mkdir /data/misc/wifi/sockets 0770 wifi wifi
     mkdir /data/misc/dhcp 0770 dhcp dhcp
+
     setprop vold.post_fs_data_done 1
 
 service wpa_supplicant /system/bin/wpa_supplicant \
@@ -257,9 +270,6 @@ service lpmkey /system/bin/charging_mode
     class charger
     user root
     oneshot
-
-on property:sys.radio.shutdown=true
-    write /sys/devices/platform/rs300000a7.65536/force_sync 1
 
 on property:init.svc.ril-daemon=running
     start get_macaddrs

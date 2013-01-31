@@ -36,9 +36,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
     frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
-    frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
-    frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml
-
+    frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml
 
 # Feature live wallpaper
 PRODUCT_COPY_FILES += \
@@ -58,11 +56,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/config/nvram_net.txt:system/vendor/firmware/nvram_net.txt \
     $(LOCAL_PATH)/prebuilt/get_macaddrs:system/bin/get_macaddrs
 
-# Fix rebooting in twrp
+# Needed to reset bootmode when leaving recovery
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/recovery/rebootsystem.sh:recovery/root/sbin/rebootsystem.sh \
-    $(LOCAL_PATH)/recovery/rebootrecovery.sh:recovery/root/sbin/rebootrecovery.sh \
-    $(LOCAL_PATH)/recovery/rebootdownload.sh:recovery/root/sbin/rebootdownload.sh
+    $(LOCAL_PATH)/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh \
+    $(LOCAL_PATH)/recovery/postrecoveryboot.sh:recovery/system/bin/postrecoveryboot.sh
 
 # Input device calibration files
 PRODUCT_COPY_FILES += \
@@ -126,25 +123,13 @@ PRODUCT_PACKAGES += \
     audio.a2dp.default \
     lights.msm7x30
 
-RODUCT_PACKAGES += \
-    libgenlock \
-    libmemalloc \
-    liboverlay \
-    libqdutils \
-    libtilerenderer \
-    libI420colorconvert
-
 PRODUCT_PACKAGES += \
-    libdivxdrmdecrypt \
     libmm-omxcore \
     libOmxCore \
-    libstagefrighthw \
-    libOmxVdec \
     libOmxVenc \
-    libOmxAacEnc \
-    libOmxAmrEnc \
-    libOmxEvrcEnc \
-    libOmxQcelp13Enc
+    libOmxVdec \
+    libstagefrighthw \
+    libI420colorconvert
 
 PRODUCT_PACKAGES += \
     badblocks \
@@ -155,7 +140,8 @@ PRODUCT_PACKAGES += \
     resize2fs \
     tune2fs \
     make_ext4fs \
-    setup_fs
+    setup_fs \
+    rild
 
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory \
