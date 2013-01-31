@@ -32,7 +32,7 @@ on boot
     chown bluetooth bluetooth /sys/devices/platform/msm_serial_hs.0/clock
     chmod 0660 /sys/devices/platform/msm_serial_hs.0/clock
 
-	chmod 0444 /sys/devices/platform/msm_hsusb/gadget/usb_state
+    chmod 0444 /sys/devices/platform/msm_hsusb/gadget/usb_state
 
     # Force Power Down
     chmod 0660 /sys/class/sec/pm/power_down

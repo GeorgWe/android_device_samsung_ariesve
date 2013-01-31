@@ -6,7 +6,7 @@
 /dev/diag                 0666   root       root
 
 # the genlock client device node is world writable/readable.
-/dev/genlock              0666   root     root
+/dev/genlock              0666   root       root
 
 # gpu driver for adreno200 is globally accessible
 /dev/kgsl                 0666   root       root
