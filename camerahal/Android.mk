@@ -14,7 +14,15 @@ LOCAL_MODULE := camera.$(TARGET_BOARD_PLATFORM)
 
 LOCAL_MODULE_TAGS := optional
 
-LOCAL_SRC_FILES := cameraHAL.cpp
+LOCAL_SRC_FILES := cameraHAL.cpp \
+	exif/exif.c \
+	exif/gpsinfo.c \
+	exif/iptc.c \
+	exif/jhead.c \
+	exif/jpgfile.c \
+	exif/makernote.c
+                
+
 LOCAL_C_INCLUDES := frameworks/av/include
 LOCAL_C_INCLUDES += frameworks/native/include
 
