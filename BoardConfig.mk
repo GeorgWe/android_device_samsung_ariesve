@@ -166,7 +166,9 @@ TW_HAS_DOWNLOAD_MODE := true
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 # End recovery stuff
 
-TARGET_PREBUILT_KERNEL := device/samsung/ariesve/prebuilt/zImage
+# Build kernel from source
+TARGET_KERNEL_SOURCE := kernel/samsung/ariesve/
+TARGET_KERNEL_CONFIG := ariesve_defconfig
 
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
 

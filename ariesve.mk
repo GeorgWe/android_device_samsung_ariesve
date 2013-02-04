@@ -77,8 +77,8 @@ PRODUCT_COPY_FILES += \
 
 # Modules
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/cifs.ko:root/lib/modules/cifs.ko \
-    $(LOCAL_PATH)/prebuilt/dhd.ko:root/lib/modules/dhd.ko
+    $(LOCAL_KERNEL)/fs/cifs/cifs.ko:root/lib/modules/cifs.ko \
+    $(LOCAL_KERNEL)/drivers/net/wireless/bcm4329/dhd.ko:root/lib/modules/dhd.ko
 
 # LPM
 PRODUCT_COPY_FILES += \
