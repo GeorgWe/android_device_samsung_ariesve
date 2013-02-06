@@ -75,6 +75,11 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keyfiles/sec_jack.kl:system/usr/keylayout/sec_jack.kl \
     $(LOCAL_PATH)/keyfiles/melfas_touchkey.kl:system/usr/keylayout/melfas_touchkey.kl
 
+# Modules
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilt/cifs.ko:root/lib/modules/cifs.ko \
+    $(LOCAL_PATH)/prebuilt/dhd.ko:root/lib/modules/dhd.ko \
+
 # LPM
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/lpm/bin/charging_mode:system/bin/charging_mode \
