@@ -3,10 +3,11 @@ import init.qcom.usb.rc
 on init
     export EXTERNAL_STORAGE /storage/sdcard0
     export SECONDARY_STORAGE /storage/sdcard1
+
     mkdir /storage 0050 system sdcard_r
     mkdir /storage/sdcard0 0000 system system
     mkdir /storage/sdcard1 0000 system system
-    # for backwards compatibility
+
     symlink /storage/sdcard0 /sdcard
     symlink /storage/sdcard0 /mnt/sdcard
     symlink /storage/sdcard1 /external_sd
@@ -17,7 +18,12 @@ on early-boot
     setrlimit 8 67108864 67108864
 
 on boot
+    # Disable idle power collapse during boot.
+    # These features will be enabled at the end of boot
+    write /sys/module/pm2/parameters/idle_sleep_mode 3
+
     mount debugfs /sys/kernel/debug /sys/kernel/debug
+
     mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
@@ -30,6 +36,7 @@ on boot
     chown bluetooth bluetooth ro.bt.bdaddr_path
     chown bluetooth bluetooth /sys/devices/platform/msm_serial_hs.0/clock
     chmod 0660 /sys/devices/platform/msm_serial_hs.0/clock
+
     chmod 0444 /sys/devices/platform/msm_hsusb/gadget/usb_state
 
     # Force Power Down
@@ -153,9 +160,9 @@ on boot
     chown system system /proc/nosim_handler
     copy /data/dump_enable /proc/dump_enable
 
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 245760
     write /sys/devices/system/cpu/cpufreq/ondemand/up_threshold 90
     write /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate 75000
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 245760
 
     chown system system /sys/devices/system/cpu/cpufreq/ondemand/boostfreq
     chmod 0664 /sys/devices/system/cpu/cpufreq/ondemand/boostfreq
@@ -173,6 +180,8 @@ on boot
     chmod 0664 /sys/devices/system/cpu/cpufreq/ondemand/powersave_bias
     chown system system /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor
     chmod 0664 /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor
+    chown system system /sys/devices/system/cpu/cpufreq ondemand/up_threshold	
+    chmod 0664 /sys/devices/system/cpu/cpufreq ondemand/up_threshold
 
 on emmc-fs
     chmod 0666 /dev/block/mmcblk0p14
@@ -269,6 +278,9 @@ service lpmkey /system/bin/charging_mode
     user root
     oneshot
 
+on property:sys.radio.shutdown=true
+    write /sys/devices/platform/rs300000a7.65536/force_sync 1
+
 on property:init.svc.ril-daemon=running
     start get_macaddrs
 
@@ -280,3 +292,6 @@ on property:init.svc.playlpm=running
     chmod 666 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor powersave
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 122880
+
+on property:sys.boot_completed=1
+    write /sys/module/pm2/parameters/idle_sleep_mode 1

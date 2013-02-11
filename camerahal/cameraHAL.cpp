@@ -450,11 +450,9 @@ void CameraHAL_FixupParams(android::CameraParameters &camParams, priv_camera_dev
         camParams.set(CameraParameters::KEY_MAX_ZOOM, "12");
         camParams.set(CameraParameters::KEY_ZOOM_RATIOS, "100,125,150,175,200,225,250,275,300,325,350,375,400");
         camParams.set(CameraParameters::KEY_ZOOM_SUPPORTED, CameraParameters::TRUE);
-        camParams.set(CameraParameters::KEY_SUPPORTED_PREVIEW_FRAME_RATES, "15,10,7");
     }
-    if (dev->cameraid == CAMERA_ID_FRONT) {
-        camParams.set(CameraParameters::KEY_SUPPORTED_PREVIEW_FRAME_RATES, "30,15,7");
-    }
+
+    camParams.set(CameraParameters::KEY_SUPPORTED_PREVIEW_FRAME_RATES, "30,15,7");
 
     camParams.set(CameraParameters::KEY_MAX_EXPOSURE_COMPENSATION, 4);
     camParams.set(CameraParameters::KEY_MIN_EXPOSURE_COMPENSATION, -4);
@@ -1174,7 +1172,7 @@ int camera_get_camera_info(int camera_id, struct camera_info *info)
 
     return rv;
 }
-	
+
 extern "C" {
 #include "exif/jhead.h"
 }

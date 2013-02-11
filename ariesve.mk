@@ -12,19 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Overlay path
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
-# This device is hdpi
+# Pixel density
 PRODUCT_AAPT_CONFIG := normal hdpi
 PRODUCT_AAPT_PREF_CONFIG := hdpi
 PRODUCT_LOCALES += hdpi
 
-# Boot and charging images
+# Bootsplash and charging image
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ARIESVE.rle:root/ARIESVE.rle \
     $(LOCAL_PATH)/lpm/charging.rle:root/charging.rle
 
-# Support files
+# Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
     frameworks/native/data/etc/android.hardware.camera.autofocus.xml:system/etc/permissions/android.hardware.camera.autofocus.xml \
@@ -36,36 +37,41 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
     frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
-    frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml
+    frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
+    frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml
 
-# Feature live wallpaper
+# Live wallpaper
 PRODUCT_COPY_FILES += \
     packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
 
-# Media configuration xml file
+# Media configuration
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/config/media_codecs.xml:system/etc/media_codecs.xml \
     $(LOCAL_PATH)/config/media_profiles.xml:system/etc/media_profiles.xml
 
+# Ramdisk
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/config/init.qcom.rc:root/init.qcom.rc \
     $(LOCAL_PATH)/config/init.qcom.usb.rc:root/init.qcom.usb.rc \
     $(LOCAL_PATH)/config/ueventd.qcom.rc:root/ueventd.qcom.rc \
     $(LOCAL_PATH)/config/vold.fstab:system/etc/vold.fstab \
-    $(LOCAL_PATH)/config/fstab.qcom:root/fstab.qcom \
+    $(LOCAL_PATH)/config/fstab.qcom:root/fstab.qcom
+
+# Prebuilt stuff
+PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/config/nvram_net.txt:system/vendor/firmware/nvram_net.txt \
     $(LOCAL_PATH)/prebuilt/get_macaddrs:system/bin/get_macaddrs
 
-# Needed to reset bootmode when leaving recovery
+# Recovery fix
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh \
     $(LOCAL_PATH)/recovery/postrecoveryboot.sh:recovery/system/bin/postrecoveryboot.sh
 
-# Input device calibration files
+# Touchscreen calibration
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/config/quantom-touchscreen.idc:system/usr/idc/quantom-touchscreen.idc
 
-# Keychars and keylayout files
+# Keychars and keylayout
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keyfiles/ariesve_keypad_numeric.kcm.bin:system/usr/keychars/ariesve_keypad_numeric.kcm.bin \
     $(LOCAL_PATH)/keyfiles/ariesve_keypad_qwerty.kcm.bin:system/usr/keychars/ariesve_keypad_qwerty.kcm.bin \
@@ -77,8 +83,8 @@ PRODUCT_COPY_FILES += \
 
 # Modules
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/cifs.ko:root/lib/modules/cifs.ko \
-    $(LOCAL_PATH)/prebuilt/dhd.ko:root/lib/modules/dhd.ko \
+    $(LOCAL_PATH)/../../../out/target/product/ariesve/obj/KERNEL_OBJ/fs/cifs/cifs.ko:root/lib/modules/cifs.ko \
+    $(LOCAL_PATH)/../../../out/target/product/ariesve/obj/KERNEL_OBJ/drivers/net/wireless/bcm4329/dhd.ko:root/lib/modules/dhd.ko
 
 # LPM
 PRODUCT_COPY_FILES += \
@@ -110,6 +116,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/lpm/media/battery_error.qmg:system/media/battery_error.qmg \
     $(LOCAL_PATH)/lpm/media/chargingwarning.qmg:system/media/chargingwarning.qmg
 
+# Build packages
 PRODUCT_PACKAGES += \
     camera.msm7x30 \
     copybit.msm7x30 \
@@ -140,24 +147,20 @@ PRODUCT_PACKAGES += \
     resize2fs \
     tune2fs \
     make_ext4fs \
-    setup_fs \
-    rild
+    setup_fs
 
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory \
     hciconfig \
     hcitool \
-    libaudioutils \
-    AriesParts
+    libaudioutils
 
-# For userdebug builds
+# Build properties
 ADDITIONAL_DEFAULT_PROPERTIES += \
-    ro.secure=0 \
-    ro.allow.mock.location=1 \
-    ro.debuggable=1
+    ro.secure=0
 
 # We have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
 
-$(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
+# Vendor stuff
 $(call inherit-product-if-exists, vendor/samsung/ariesve/device-vendor.mk)
