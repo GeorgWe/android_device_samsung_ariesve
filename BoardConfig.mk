@@ -141,8 +141,8 @@ BOARD_HAS_SDCARD_INTERNAL := true
 # Costum recovery files
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/ariesve/recovery/recovery_keys.c
 BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/ariesve/recovery/graphics.c
-TARGET_RECOVERY_INITRC := device/samsung/ariesve/config/init.recovery.rc
-TARGET_RECOVERY_FSTAB := device/samsung/ariesve/recovery.fstab
+TARGET_RECOVERY_INITRC := device/samsung/ariesve/recovery/init.recovery.rc
+TARGET_RECOVERY_FSTAB := device/samsung/ariesve/recovery/recovery.fstab
 
 # TWRP stuff
 DEVICE_RESOLUTION := 480x800
