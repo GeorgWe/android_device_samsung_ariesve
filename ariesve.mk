@@ -57,12 +57,12 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/config/vold.fstab:system/etc/vold.fstab \
     $(LOCAL_PATH)/config/fstab.qcom:root/fstab.qcom
 
-# Prebuilt stuff
+# Misc stuff
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/config/nvram_net.txt:system/vendor/firmware/nvram_net.txt \
     $(LOCAL_PATH)/prebuilt/get_macaddrs:system/bin/get_macaddrs
 
-# Recovery fix
+# Recovery fixes
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh \
     $(LOCAL_PATH)/recovery/postrecoveryboot.sh:recovery/system/bin/postrecoveryboot.sh
@@ -80,11 +80,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keyfiles/ariesve_keypad.kl:system/usr/keylayout/ariesve_keypad.kl \
     $(LOCAL_PATH)/keyfiles/sec_jack.kl:system/usr/keylayout/sec_jack.kl \
     $(LOCAL_PATH)/keyfiles/melfas_touchkey.kl:system/usr/keylayout/melfas_touchkey.kl
-
-# Modules
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/../../../out/target/product/ariesve/obj/KERNEL_OBJ/fs/cifs/cifs.ko:root/lib/modules/cifs.ko \
-    $(LOCAL_PATH)/../../../out/target/product/ariesve/obj/KERNEL_OBJ/drivers/net/wireless/bcm4329/dhd.ko:root/lib/modules/dhd.ko
 
 # LPM
 PRODUCT_COPY_FILES += \
@@ -154,6 +149,21 @@ PRODUCT_PACKAGES += \
     hciconfig \
     hcitool \
     libaudioutils
+
+# Kernel
+ifeq ($(TARGET_PREBUILT_KERNEL),)
+    LOCAL_KERNEL := $(LOCAL_PATH)/prebuilt/zImage
+else
+    LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+endif
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_KERNEL):kernel
+
+# Modules
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilt/cifs.ko:root/lib/modules/cifs.ko \
+    $(LOCAL_PATH)/prebuilt/dhd.ko:root/lib/modules/dhd.ko
 
 # Build properties
 ADDITIONAL_DEFAULT_PROPERTIES += \

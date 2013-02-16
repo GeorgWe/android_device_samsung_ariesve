@@ -56,8 +56,9 @@ TARGET_SCREEN_WIDTH := 480
 # Kernel stuff
 BOARD_KERNEL_BASE := 0x00400000
 BOARD_KERNEL_PAGESIZE := 4096
-TARGET_KERNEL_SOURCE := kernel/samsung/msm7x30/
-TARGET_KERNEL_CONFIG := ariesve_defconfig
+#TARGET_KERNEL_SOURCE := kernel/samsung/msm7x30/
+#TARGET_KERNEL_CONFIG := ariesve_defconfig
+TARGET_PREBUILT_KERNEL := device/samsung/ariesve/prebuilt/zImage
 
 # WiFi
 BOARD_WPA_SUPPLICANT_DRIVER      := WEXT
@@ -155,3 +156,4 @@ TW_FLASH_FROM_STORAGE := true
 TW_NO_REBOOT_BOOTLOADER := true	  	
 TW_HAS_DOWNLOAD_MODE := true
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
+TARGET_PREBUILT_RECOVERY_KERNEL := device/samsung/ariesve/recovery/zImage
