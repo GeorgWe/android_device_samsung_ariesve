@@ -18,10 +18,6 @@ on early-boot
     setrlimit 8 67108864 67108864
 
 on boot
-    # Disable idle power collapse during boot.
-    # These features will be enabled at the end of boot
-    write /sys/module/pm2/parameters/idle_sleep_mode 3
-
     mount debugfs /sys/kernel/debug /sys/kernel/debug
 
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
