@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Galaxy S Plus Einstellungen</string>
+
+    <string name="category_screen_title">Bildschirm</string>
+    <string name="color_tuning_title_head">Farbkalibrierung</string>
+    <string name="color_tuning_summary_head">Farbkalibrierung</string>
+    <string name="color_red_title">Rot</string>
+    <string name="color_green_title">Grün</string>
+    <string name="color_blue_title">Blau</string>
+    <string name="color_red_gamma_title">Rotes Gamma</string>
+    <string name="color_green_gamma_title">Grünes Gamma</string>
+    <string name="color_blue_gamma_title">Blaues Gamma</string>
+    <string name="mdnie_title_head">mDNIe Modus</string>
+    <string name="mdnie_summary_head">mDNIe Display Post-Processing anpassen</string>
+
+    <string name="category_touchkey_title">Touch Tasten</string>
+    <string name="backlight_timeout_title_head">Hintergrundbeleuchtungs Timeout</string>
+    <string name="backlight_timeout_summary_head">Passe die Verzögerung der Hintergrundbeleutung der Touchtasten an bis sie ausgeht</string>
+    <string name="backlight_wakelock_title_head">BLN Aktivierung</string>
+    <string name="backlight_wakelock_summary_head">Lasse BLN aktiviert während des Deep Sleeps (höherer Akkuverbrauch)</string>
+    <string name="category_radio_title">Radio</string>
+    <string name="hspa_title_head">HSPA</string>
+    <string name="hspa_summary_head">Aktiviere HSDPA/HSUPA</string>
+
+    <string name="category_tvout_title">TV-Out</string>
+    <string name="tvout_enable_head">TV-Out</string>
+    <string name="tvout_enable_summary_nocable">TV-Out Kabel nicht erkannt</string>
+    <string name="tvout_enable_summary">TV-Out Kable erkannt, drücke um zu aktivieren</string>
+    <string name="tvout_enable_summary_on">TV-Out aktiviert</string>
+    <string name="tvout_system_head">TV System</string>
+    <string name="tvout_system_summary">Aktiviere das TV System für TV-Out</string>
+
+    <string name="category_volume_boost_title">Volumen Kontrolle</string>
+    <string name="volume_boost_title_head">In-Call Volumen Kontrolle</string>
+    <string name="volume_boost_summary_head">Bessere In-Call Volumen Einstellungen</string>
+    <string name="boost_rcv_title">In-Ear Volumen</string>
+    <string name="boost_bt_title">Bluetooth Volumen</string>
+    <string name="boost_spk_title">Lautsprecher Volumen</string>
+    <string name="boost_hp_title">Kopfhörer Volumen</string>
+    <string name="mic_rcv_title">In-Ear Mikrofon</string>
+    <string name="mic_spk_title">Mikrofon</string>
+    <string name="mic_hp_title">Kopfhörer Mikrofon</string>
+    <string name="mic_hp_no_mic_title">Kopfhörer (Kein Mikrofon)</string>
+    <string name="g_sensor_title">Horizontale Kalibrierung</string>
+    <string name="g_sensor_summary">Horizontale Kalibrierung mit Accelerometer</string>
+    <string name="gsensor_ready">Platziere das Gerät auf einer flachen Ebene und drücke "Kalibrieren"</string>
+    <string name="gsensor_calibrating">Kalibriere. Gerät nicht bewegen. Bitte warten...</string>
+    <string name="gsensor_nofile">Offset Datei nicht gefunden. Erneut versuchen</string>
+    <string name="gsensor_end">Kalibriert</string>
+    <string name="gsensor_button1">Fertig</string>
+    <string name="gsensor_button2">Kalibrieren</string>
+	
+    <string name="category_fast_charge_title">Schnelles Laden</string>
+    <string name="force_fast_charge_head">Schnelles Laden über USB</string>
+    <string name="force_fast_charge_summary_head">Erkenne den über USB angeschlossenen PC als Aufladestecker, um schneller zu Laden</string>
+</resources>
