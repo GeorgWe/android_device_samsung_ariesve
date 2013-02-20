@@ -15,10 +15,10 @@
     <string name="mdnie_summary_head">mDNIe Display Post-Processing anpassen</string>
 
     <string name="category_touchkey_title">Touch Tasten</string>
-    <string name="backlight_timeout_title_head">Hintergrundbeleuchtungs Timeout</string>
-    <string name="backlight_timeout_summary_head">Passe die Verzögerung der Hintergrundbeleutung der Touchtasten an bis sie ausgeht</string>
-    <string name="backlight_wakelock_title_head">BLN Aktivierung</string>
-    <string name="backlight_wakelock_summary_head">Lasse BLN aktiviert während des Deep Sleeps (höherer Akkuverbrauch)</string>
+    <string name="backlight_timeout_title_head">Timeout</string>
+    <string name="backlight_timeout_summary_head">Passe die Verzögerung an wann die Hintergrundbeleutung der Touchtasten ausgeht</string>
+    <string name="backlight_wakelock_title_head">BLN</string>
+    <string name="backlight_wakelock_summary_head">Lasse BLN während des Deep Sleeps aktiviert (höherer Akkuverbrauch!)</string>
     <string name="category_radio_title">Radio</string>
     <string name="hspa_title_head">HSPA</string>
     <string name="hspa_summary_head">Aktiviere HSDPA/HSUPA</string>
@@ -51,7 +51,7 @@
     <string name="gsensor_button1">Fertig</string>
     <string name="gsensor_button2">Kalibrieren</string>
 	
-    <string name="category_fast_charge_title">Schnelles Laden</string>
-    <string name="force_fast_charge_head">Schnelles Laden über USB</string>
-    <string name="force_fast_charge_summary_head">Erkenne den über USB angeschlossenen PC als Aufladestecker, um schneller zu Laden</string>
+    <string name="category_fast_charge_title">Laden</string>
+    <string name="force_fast_charge_head">Schnelles Laden</string>
+    <string name="force_fast_charge_summary_head">Erkenne den über USB angeschlossenen PC als Aufladestecker, um schneller zu laden</string>
 </resources>
