@@ -148,7 +148,8 @@ PRODUCT_PACKAGES += \
     com.android.future.usb.accessory \
     hciconfig \
     hcitool \
-    libaudioutils
+    libaudioutils \
+    AriesParts
 
 # Kernel
 ifeq ($(TARGET_PREBUILT_KERNEL),)
