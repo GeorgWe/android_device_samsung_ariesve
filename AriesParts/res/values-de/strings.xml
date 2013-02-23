@@ -8,6 +8,7 @@
     <string name="backlight_wakelock_title_head">BLN</string>
     <string name="backlight_wakelock_summary_head">Lasse BLN während des Deep Sleeps aktiviert (höherer Akkuverbrauch!)</string>
 
+    <string name="category_screen_title">Bildschirm</string>
     <string name="g_sensor_title">Horizontale Kalibrierung</string>
     <string name="g_sensor_summary">Horizontale Kalibrierung mit Accelerometer</string>
     <string name="gsensor_ready">Platziere das Gerät auf einer flachen Ebene und drücke "Kalibrieren"</string>

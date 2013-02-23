@@ -22,16 +22,14 @@ public class TouchKeyBacklightWakelock implements OnPreferenceChangeListener {
         if (!isSupported()) {
             return;
         }
-
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
         Utils.writeValue(FILE, sharedPrefs.getBoolean(DeviceSettings.KEY_BACKLIGHT_WAKELOCK, false) ? "1" : "0");
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {		
-	    Utils.writeValue(FILE, ((Boolean)newValue) ? "1" : "0");
+	Utils.writeValue(FILE, ((Boolean)newValue) ? "1" : "0");
         return true;
     }
-
 }
 
