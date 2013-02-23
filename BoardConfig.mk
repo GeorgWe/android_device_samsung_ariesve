@@ -143,7 +143,6 @@ BOARD_VOLD_MAX_PARTITIONS := 28
 # Costum recovery files
 TARGET_RECOVERY_INITRC := device/samsung/ariesve/recovery/init.recovery.rc
 TARGET_RECOVERY_FSTAB := device/samsung/ariesve/recovery/recovery.fstab
-TARGET_PREBUILT_RECOVERY_KERNEL := device/samsung/ariesve/recovery/zImage
 
 # TWRP recovery stuff
 BOARD_HAS_SDCARD_INTERNAL := true
