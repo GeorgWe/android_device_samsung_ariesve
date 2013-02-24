@@ -3,11 +3,10 @@ import init.qcom.usb.rc
 on init
     export EXTERNAL_STORAGE /storage/sdcard0
     export SECONDARY_STORAGE /storage/sdcard1
-
     mkdir /storage 0050 system sdcard_r
     mkdir /storage/sdcard0 0000 system system
     mkdir /storage/sdcard1 0000 system system
-
+    # for backwards compatibility
     symlink /storage/sdcard0 /sdcard
     symlink /storage/sdcard0 /mnt/sdcard
     symlink /storage/sdcard1 /external_sd
@@ -18,6 +17,10 @@ on early-boot
     setrlimit 8 67108864 67108864
 
 on boot
+    # Disable idle power collapse during boot.
+    # These features will be enabled at the end of boot
+    write /sys/module/pm2/parameters/idle_sleep_mode 3
+
     mount debugfs /sys/kernel/debug /sys/kernel/debug
 
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
@@ -32,7 +35,7 @@ on boot
     chown bluetooth bluetooth /sys/devices/platform/msm_serial_hs.0/clock
     chmod 0660 /sys/devices/platform/msm_serial_hs.0/clock
 
-    chmod 0444 /sys/devices/platform/msm_hsusb/gadget/usb_state
+	chmod 0444 /sys/devices/platform/msm_hsusb/gadget/usb_state
 
     # Force Power Down
     chmod 0660 /sys/class/sec/pm/power_down
@@ -145,6 +148,9 @@ on boot
     chown radio system sys/devices/platform/msm_sdcc.1/polling
     chown radio system sys/devices/platform/android_usb/tethering
     chown radio system sys/devices/virtual/graphics/fb1/hpd
+    chown system system sys/class/misc/notification/led
+    chown system system sys/class/misc/notification/bl_timeout
+    chown system system sys/class/misc/notification/wakelock
 
     # for silent reset
     chown system system /proc/dump_enable
@@ -174,6 +180,9 @@ on boot
     write /sys/devices/system/cpu/cpufreq/ondemand/up_threshold 90
     write /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate 75000
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 245760
+
+on property:sys.boot_completed=1
+    write /sys/module/pm2/parameters/idle_sleep_mode 1
 
 on emmc-fs
     chmod 0666 /dev/block/mmcblk0p14
@@ -283,6 +292,3 @@ on property:init.svc.playlpm=running
     chmod 666 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor powersave
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 122880
-
-on property:sys.boot_completed=1
-    write /sys/module/pm2/parameters/idle_sleep_mode 1
