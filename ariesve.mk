@@ -158,8 +158,10 @@ PRODUCT_COPY_FILES += \
 
 # Modules
 PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilt/bcmdhd.ko:root/lib/modules/bcmdhd.ko \
     $(LOCAL_PATH)/prebuilt/cifs.ko:root/lib/modules/cifs.ko \
-    $(LOCAL_PATH)/prebuilt/dhd.ko:root/lib/modules/dhd.ko
+    $(LOCAL_PATH)/prebuilt/bcmdhd.ko:system/lib/modules/bcmdhd.ko \
+    $(LOCAL_PATH)/prebuilt/cifs.ko:system/lib/modules/cifs.ko
 
 # Build properties
 ADDITIONAL_DEFAULT_PROPERTIES += \
@@ -167,6 +169,9 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
 
 # We have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
+
+# WiFi
+$(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4329/device-bcm.mk)
 
 # Vendor stuff
 $(call inherit-product-if-exists, vendor/samsung/ariesve/device-vendor.mk)
