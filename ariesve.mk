@@ -159,9 +159,7 @@ PRODUCT_COPY_FILES += \
 # Modules
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/bcmdhd.ko:root/lib/modules/bcmdhd.ko \
-    $(LOCAL_PATH)/prebuilt/cifs.ko:root/lib/modules/cifs.ko \
-    $(LOCAL_PATH)/prebuilt/bcmdhd.ko:system/lib/modules/bcmdhd.ko \
-    $(LOCAL_PATH)/prebuilt/cifs.ko:system/lib/modules/cifs.ko
+    $(LOCAL_PATH)/prebuilt/cifs.ko:root/lib/modules/cifs.ko
 
 # Build properties
 ADDITIONAL_DEFAULT_PROPERTIES += \
