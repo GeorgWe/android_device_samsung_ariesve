@@ -96,12 +96,14 @@ BOARD_HAVE_SAMSUNG_AUDIO := true
 BOARD_USES_QCOM_AUDIO_RESETALL := true
 BOARD_USES_QCOM_AUDIO_VOIPMUTE := true
 
-# Graphic stuff
+# EGL
 BOARD_EGL_CFG := device/samsung/ariesve/config/egl.cfg
 USE_OPENGL_RENDERER := true
+ENABLE_WEBGL := true
+
+# Display stuff
 TARGET_NO_HW_VSYNC := false
 TARGET_USES_C2D_COMPOSITION := true
-ENABLE_WEBGL := true
 TARGET_FORCE_CPU_UPLOAD := true
 TARGET_PROVIDES_LIBLIGHTS := true
 BOARD_USE_LEGACY_TOUCHSCREEN := true
@@ -145,7 +147,7 @@ BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 BOARD_VOLD_MAX_PARTITIONS := 28
 
 # Costum recovery files
-TARGET_RECOVERY_INITRC := device/samsung/ariesve/recovery/init.recovery.rc
+TARGET_RECOVERY_INITRC := device/samsung/ariesve/recovery/init.rc
 TARGET_RECOVERY_FSTAB := device/samsung/ariesve/recovery/recovery.fstab
 
 # TWRP recovery stuff

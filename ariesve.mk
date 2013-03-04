@@ -51,11 +51,11 @@ PRODUCT_COPY_FILES += \
 
 # Ramdisk
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/config/init.qcom.rc:root/init.qcom.rc \
-    $(LOCAL_PATH)/config/init.qcom.usb.rc:root/init.qcom.usb.rc \
-    $(LOCAL_PATH)/config/ueventd.qcom.rc:root/ueventd.qcom.rc \
-    $(LOCAL_PATH)/config/vold.fstab:system/etc/vold.fstab \
-    $(LOCAL_PATH)/config/fstab.qcom:root/fstab.qcom
+    $(LOCAL_PATH)/ramdisk/init.qcom.rc:root/init.qcom.rc \
+    $(LOCAL_PATH)/ramdisk/init.qcom.usb.rc:root/init.qcom.usb.rc \
+    $(LOCAL_PATH)/ramdisk/ueventd.qcom.rc:root/ueventd.qcom.rc \
+    $(LOCAL_PATH)/ramdisk/vold.fstab:system/etc/vold.fstab \
+    $(LOCAL_PATH)/ramdisk/fstab.qcom:root/fstab.qcom
 
 # Misc stuff
 PRODUCT_COPY_FILES += \
