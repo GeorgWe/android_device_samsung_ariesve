@@ -12,6 +12,5 @@ public class Startup extends BroadcastReceiver {
         TouchKeyBacklightWakelock.restore(context);
         FastCharge.restore(context);
     }
-
 }
 
