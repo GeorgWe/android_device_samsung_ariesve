@@ -158,7 +158,7 @@ PRODUCT_COPY_FILES += \
 
 # Modules
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/bcmdhd.ko:root/lib/modules/bcmdhd.ko \
+    $(LOCAL_PATH)/prebuilt/dhd.ko:root/lib/modules/dhd.ko \
     $(LOCAL_PATH)/prebuilt/cifs.ko:root/lib/modules/cifs.ko
 
 # Build properties
