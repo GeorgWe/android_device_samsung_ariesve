@@ -163,6 +163,9 @@
         <item>255</item>
     </integer-array>
 
+    <!-- Minimum screen brightness allowed by the power manager. -->	
+    <integer name="config_screenBrightnessDim">30</integer>
+
     <!-- Package name providing network location support. -->
     <string name="config_networkLocationProviderPackageName" translatable="false">com.google.android.location</string>
 

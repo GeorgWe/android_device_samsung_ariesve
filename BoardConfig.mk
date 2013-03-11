@@ -62,6 +62,8 @@ BOARD_KERNEL_PAGESIZE := 4096
 TARGET_PREBUILT_KERNEL := device/samsung/ariesve/prebuilt/zImage
 
 # WiFi
+BOARD_HAVE_SAMSUNG_WIFI          := true	
+BOARD_LEGACY_NL80211_STA_EVENTS  := true
 WIFI_BAND                        := 802_11_ABG
 WPA_SUPPLICANT_VERSION           := VER_0_8_X
 BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
