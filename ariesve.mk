@@ -129,7 +129,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     badblocks \
     e2fsck \
-    e2label \
     mke2fs \
     mke2fs.conf \
     resize2fs \
@@ -157,7 +156,8 @@ PRODUCT_COPY_FILES += \
 # Modules
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/dhd.ko:root/lib/modules/dhd.ko \
-    $(LOCAL_PATH)/prebuilt/cifs.ko:root/lib/modules/cifs.ko
+    $(LOCAL_PATH)/prebuilt/cifs.ko:root/lib/modules/cifs.ko \
+    $(LOCAL_PATH)/prebuilt/frandom.ko:root/lib/modules/frandom.ko
 
 # Build properties
 ADDITIONAL_DEFAULT_PROPERTIES += \
