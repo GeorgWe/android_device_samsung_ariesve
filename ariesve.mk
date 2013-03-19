@@ -156,8 +156,7 @@ PRODUCT_COPY_FILES += \
 # Modules
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/dhd.ko:root/lib/modules/dhd.ko \
-    $(LOCAL_PATH)/prebuilt/cifs.ko:root/lib/modules/cifs.ko \
-    $(LOCAL_PATH)/prebuilt/frandom.ko:root/lib/modules/frandom.ko
+    $(LOCAL_PATH)/prebuilt/cifs.ko:root/lib/modules/cifs.ko
 
 # Build properties
 ADDITIONAL_DEFAULT_PROPERTIES += \
