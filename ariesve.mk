@@ -53,7 +53,7 @@ PRODUCT_COPY_FILES += \
 
 # Recovery stuff
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/config/init.qcom.usb.rc:recovery/root/usb.rc
+    $(LOCAL_PATH)/ramdisk/init.qcom.usb.rc:recovery/root/usb.rc
 
 # BT stuff
 PRODUCT_COPY_FILES += \
@@ -138,7 +138,7 @@ PRODUCT_PACKAGES += \
     libOmxAacEnc \
     libOmxAmrEnc \
     libOmxEvrcEnc \
-    libOmxQcelp13Enc
+    libOmxQcelp13Enc \
     libdivxdrmdecrypt
 
 PRODUCT_PACKAGES += \
