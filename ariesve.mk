@@ -139,7 +139,8 @@ PRODUCT_PACKAGES += \
     libOmxAmrEnc \
     libOmxEvrcEnc \
     libOmxQcelp13Enc \
-    libdivxdrmdecrypt
+    libdivxdrmdecrypt \
+    libdashplayer
 
 PRODUCT_PACKAGES += \
     badblocks \
