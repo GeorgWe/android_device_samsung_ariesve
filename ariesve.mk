@@ -55,9 +55,12 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ramdisk/vold.fstab:system/etc/vold.fstab \
     $(LOCAL_PATH)/ramdisk/fstab.qcom:root/fstab.qcom
 
-# Misc stuff
+# Recovery stuff
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/config/nvram_net.txt:system/vendor/firmware/nvram_net.txt \
+    $(LOCAL_PATH)/config/init.qcom.usb.rc:recovery/root/usb.rc
+
+# BT stuff
+PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/get_macaddrs:system/bin/get_macaddrs
 
 # Touchscreen calibration
@@ -167,6 +170,9 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 
 # WiFi
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4329/device-bcm.mk)
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/config/nvram_net.txt:system/vendor/firmware/nvram_net.txt
 
 # Vendor stuff
 $(call inherit-product-if-exists, vendor/samsung/ariesve/device-vendor.mk)

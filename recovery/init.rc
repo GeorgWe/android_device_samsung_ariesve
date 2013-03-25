@@ -1,3 +1,5 @@
+import usb.rc
+
 on early-init
     start ueventd
 
@@ -16,11 +18,11 @@ on init
     mkdir /external_sd
     mkdir /system
     mkdir /data
-    mkdir /data/data
     mkdir /cache
     mount /tmp /tmp tmpfs
 
-    write /sys/class/android_usb/android0/iSerial $ro.serialno
+    chown root shell /tmp
+    chmod 0775 /tmp
 
 on boot
     mount debugfs /sys/kernel/debug /sys/kernel/debug
@@ -31,20 +33,16 @@ on boot
 
     class_start default
 
-    write /sys/class/android_usb/android0/iManufacturer Samsung
-    write /sys/class/android_usb/android0/iProduct $ro.product.model
-    write /sys/class/android_usb/f_mass_storage/inquiry_string $ro.product.manufacturer
-
 service ueventd /sbin/ueventd
     critical
 
 service console /sbin/sh
-    class core
     console
     disabled
+    user shell
     group log
 
-on property:ro.debuggable=1
+on property:ro.secure=0
     start console
 
 service recovery /sbin/recovery
@@ -56,13 +54,6 @@ service adbd /sbin/adbd
 # Always start adbd on userdebug and eng builds
 # In recovery, always run adbd as root.
 on property:ro.debuggable=1
-    write /sys/class/android_usb/android0/enable 0
-    write /sys/class/android_usb/android0/idVendor 04e8
-    write /sys/class/android_usb/android0/idProduct 685e
-    write /sys/class/android_usb/android0/functions mass_storage,adb
-    write /sys/class/android_usb/android0/enable 1
-    start adbd
-    setprop sys.usb.state mass_storage,adb
     setprop sys.usb.config mass_storage,adb
     setprop service.adb.root 1
 
@@ -75,3 +66,4 @@ on property:persist.service.adb.enable=1
 
 on property:persist.service.adb.enable=0
     stop adbd
+
