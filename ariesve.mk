@@ -38,10 +38,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
     frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml
 
-# Live wallpaper
-PRODUCT_COPY_FILES += \
-    packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
-
 # Media configuration
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/config/media_codecs.xml:system/etc/media_codecs.xml \
@@ -62,6 +58,10 @@ PRODUCT_COPY_FILES += \
 # BT stuff
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/get_macaddrs:system/bin/get_macaddrs
+
+# Audio configuration
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilt/audio_policy.conf:system/etc/audio_policy.conf
 
 # Touchscreen calibration
 PRODUCT_COPY_FILES += \
@@ -122,12 +122,24 @@ PRODUCT_PACKAGES += \
     lights.msm7x30
 
 PRODUCT_PACKAGES += \
+    libgenlock \
+    libmemalloc \
+    liboverlay \
+    libqdutils \
+    libtilerenderer
+
+PRODUCT_PACKAGES += \
     libmm-omxcore \
     libOmxCore \
     libOmxVenc \
     libOmxVdec \
     libstagefrighthw \
-    libI420colorconvert
+    libI420colorconvert \
+    libOmxAacEnc \
+    libOmxAmrEnc \
+    libOmxEvrcEnc \
+    libOmxQcelp13Enc
+    libdivxdrmdecrypt
 
 PRODUCT_PACKAGES += \
     badblocks \

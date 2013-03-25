@@ -17,6 +17,7 @@
 
 enum rotator_clk_type {
 	ROTATOR_CORE_CLK,
+	ROTATOR_AXI_CLK,
 	ROTATOR_PCLK,
 	ROTATOR_IMEM_CLK
 };
