@@ -271,18 +271,17 @@ public class SamsungRIL extends RIL implements CommandsInterface {
                     return;
                 }
             } else {
-		       switch (rr.mRequest) { 
-					case RIL_REQUEST_GET_SIM_STATUS:
-		                if (mIccStatusChangedRegistrants != null) {
-		                    if (RILJ_LOGD) {
-		                        riljLog("ON some errors fakeSimStatusChanged: reg count="
-		                                + mIccStatusChangedRegistrants.size());
-		                    }
-		                    mIccStatusChangedRegistrants.notifyRegistrants();
-		                }
-		                break;
-		        }
-
+                switch (rr.mRequest) {
+                    case RIL_REQUEST_GET_SIM_STATUS:
+                        if (mIccStatusChangedRegistrants != null) {
+                            if (RILJ_LOGD) {
+                                riljLog("ON some errors fakeSimStatusChanged: reg count="
+                                        + mIccStatusChangedRegistrants.size());
+                             }
+                             mIccStatusChangedRegistrants.notifyRegistrants();
+                    }
+                    break;
+                }
                 rr.onError(error, ret);
                 rr.release();
                 return;
@@ -853,4 +852,13 @@ public class SamsungRIL extends RIL implements CommandsInterface {
         }
     }
 
+    @Override
+    public void getNeighboringCids(Message response) {
+        /* RIL_REQUEST_GET_NEIGHBORING_CELL_IDS currently returns REQUEST_NOT_SUPPORTED */
+
+        AsyncResult.forMessage(response).exception =
+        new CommandException(CommandException.Error.REQUEST_NOT_SUPPORTED);
+        response.sendToTarget();
+        response = null;
+    }
 }
