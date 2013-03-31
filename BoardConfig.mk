@@ -80,7 +80,7 @@ WIFI_DRIVER_FW_PATH_AP           := "/vendor/firmware/fw_bcmdhd_apsta.bin"
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/ariesve/bluetooth
-BOARD_BLUEDROID_VENDOR_CONF := device/samsung/ancora/bluetooth/vnd_ariesve.txt
+BOARD_BLUEDROID_VENDOR_CONF := device/samsung/ariesve/bluetooth/vnd_ariesve.txt
 
 # RIL
 BOARD_MOBILEDATA_INTERFACE_NAME = "pdp0"
