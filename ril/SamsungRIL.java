@@ -27,10 +27,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Handler;
 import android.os.Message;
 import android.os.AsyncResult;
 import android.os.Parcel;
+import android.os.Registrant;
 import android.os.SystemProperties;
 import android.telephony.PhoneNumberUtils;
 import android.telephony.SignalStrength;
@@ -60,6 +62,7 @@ public class SamsungRIL extends RIL implements CommandsInterface {
 
     private boolean mSignalbarCount = SystemProperties.getInt("ro.telephony.sends_barcount", 0) == 1 ? true : false;
     private boolean mIsSamsungCdma = SystemProperties.getBoolean("ro.ril.samsung_cdma", false);
+    private Object mCatProCmdBuffer;
 
     public SamsungRIL(Context context, int networkMode, int cdmaSubscription) {
         super(context, networkMode, cdmaSubscription);
@@ -271,17 +274,6 @@ public class SamsungRIL extends RIL implements CommandsInterface {
                     return;
                 }
             } else {
-                switch (rr.mRequest) {
-                    case RIL_REQUEST_GET_SIM_STATUS:
-                        if (mIccStatusChangedRegistrants != null) {
-                            if (RILJ_LOGD) {
-                                riljLog("ON some errors fakeSimStatusChanged: reg count="
-                                        + mIccStatusChangedRegistrants.size());
-                             }
-                             mIccStatusChangedRegistrants.notifyRegistrants();
-                    }
-                    break;
-                }
                 rr.onError(error, ret);
                 rr.release();
                 return;
@@ -363,6 +355,7 @@ public class SamsungRIL extends RIL implements CommandsInterface {
         case RIL_UNSOL_SIGNAL_STRENGTH: ret = responseSignalStrength(p); break;
         case RIL_UNSOL_CDMA_INFO_REC: ret = responseCdmaInformationRecord(p); break;
         case RIL_UNSOL_HSDPA_STATE_CHANGED: ret = responseInts(p); break;
+        case RIL_UNSOL_STK_PROACTIVE_COMMAND: ret = responseString(p); break;
 
         //fixing anoying Exceptions caused by the new Samsung states
         //FIXME figure out what the states mean an what data is in the parcel
@@ -445,6 +438,20 @@ public class SamsungRIL extends RIL implements CommandsInterface {
             if (mSignalStrengthRegistrant != null) {
                 mSignalStrengthRegistrant.notifyRegistrant(
                                     new AsyncResult (null, ret, null));
+            }
+            break;
+
+        case RIL_UNSOL_STK_PROACTIVE_COMMAND:
+            if (RILJ_LOGD) unsljLogRet(response, ret);
+
+            if (mCatProCmdRegistrant != null) {
+                mCatProCmdRegistrant.notifyRegistrant(
+                                    new AsyncResult (null, ret, null));
+            } else {
+                // The RIL will send a CAT proactive command before the
+                // registrant is registered. Buffer it to make sure it
+                // does not get ignored (and breaks CatService).
+                mCatProCmdBuffer = ret;
             }
             break;
 
@@ -591,21 +598,13 @@ public class SamsungRIL extends RIL implements CommandsInterface {
         // does not follow up with RIL_UNSOL_RESPONSE_SIM_STATUS_CHANGED. We
         // notify the system here.
         String state = SystemProperties.get(TelephonyProperties.PROPERTY_SIM_STATE);
-        if ("NOT_READY".equals(state) && mIccStatusChangedRegistrants != null) {
+        if (!"READY".equals(state) && mIccStatusChangedRegistrants != null && !mIsSamsungCdma) {
             mIccStatusChangedRegistrants.notifyRegistrants();
         }
 
-        int numInts = 12;
-        int response[];
-
-        /* TODO: Add SignalStrength class to match RIL_SignalStrength */
-        response = new int[numInts];
+        int[] response = new int[7];
         for (int i = 0 ; i < 7 ; i++) {
             response[i] = p.readInt();
-        }
-        // SamsungRIL is a v3 RIL, fill the rest with -1
-        for (int i = 7; i < numInts; i++) {
-            response[i] = -1;
         }
 
         if (mIsSamsungCdma){
@@ -613,25 +612,26 @@ public class SamsungRIL extends RIL implements CommandsInterface {
                response[3] = -response[3];
             }
             // Framework takes care of the rest for us.
-            return response;
-         }
-        /* Matching Samsung signal strength to asu.
-		   Method taken from Samsungs cdma/gsmSignalStateTracker */
-        if(mSignalbarCount)
-        {
-            // Samsung sends the count of bars that should be displayed instead of
-            // a real signal strength
-            response[0] = ((response[0] & 0xFF00) >> 8) * 3; // gsmDbm
-        } else {
-            response[0] = response[0] & 0xFF; // gsmDbm
         }
-        response[1] = -1; // gsmEcio
-        response[2] = (response[2] < 0)?-120:-response[2]; // cdmaDbm
-        response[3] = (response[3] < 0)?-160:-response[3]; // cdmaEcio
-        response[4] = (response[4] < 0)?-120:-response[4]; // evdoRssi
-        response[5] = (response[5] < 0)?-1:-response[5]; // evdoEcio
-        if(response[6] < 0 || response[6] > 8)
-            response[6] = -1;
+        else {
+            /* Matching Samsung signal strength to asu.
+              Method taken from Samsungs cdma/gsmSignalStateTracker */
+            if(mSignalbarCount)
+            {
+                // Samsung sends the count of bars that should be displayed instead of
+                // a real signal strength
+                response[0] = ((response[0] & 0xFF00) >> 8) * 3; // gsmDbm
+            } else {
+                response[0] = response[0] & 0xFF; // gsmDbm
+            }
+            response[1] = -1; // gsmEcio
+            response[2] = (response[2] < 0)?-120:-response[2]; // cdmaDbm
+            response[3] = (response[3] < 0)?-160:-response[3]; // cdmaEcio
+            response[4] = (response[4] < 0)?-120:-response[4]; // evdoRssi
+            response[5] = (response[5] < 0)?-1:-response[5]; // evdoEcio
+            if(response[6] < 0 || response[6] > 8)
+                response[6] = -1;
+        }
 
         SignalStrength signalStrength = new SignalStrength(
             response[0], response[1], response[2], response[3], response[4],
@@ -852,13 +852,143 @@ public class SamsungRIL extends RIL implements CommandsInterface {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public void getNeighboringCids(Message response) {
-        /* RIL_REQUEST_GET_NEIGHBORING_CELL_IDS currently returns REQUEST_NOT_SUPPORTED */
+    public void setCurrentPreferredNetworkType() {
+        if (RILJ_LOGD) riljLog("setCurrentPreferredNetworkType IGNORED");
+        /* Google added this as a fix for crespo loosing network type after
+         * taking an OTA. This messes up the data connection state for us
+         * due to the way we handle network type change (disable data
+         * then change then re-enable).
+         */
+    }
 
-        AsyncResult.forMessage(response).exception =
-        new CommandException(CommandException.Error.REQUEST_NOT_SUPPORTED);
-        response.sendToTarget();
-        response = null;
+    @Override
+    public void setPreferredNetworkType(int networkType , Message response) {
+        /* Samsung modem implementation does bad things when a datacall is running
+         * while switching the preferred networktype.
+         */
+        ConnectivityManager cm =
+            (ConnectivityManager)mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo.State mobileState = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState();
+        if (mobileState == NetworkInfo.State.CONNECTED || mobileState == NetworkInfo.State.CONNECTING) {
+            ConnectivityHandler handler = new ConnectivityHandler(mContext);
+            handler.setPreferedNetworkType(networkType, response);
+        } else {
+            sendPreferedNetworktype(networkType, response);
+        }
+    }
+
+
+    //Sends the real RIL request to the modem.
+    private void sendPreferedNetworktype(int networkType, Message response) {
+        RILRequest rr = RILRequest.obtain(
+                RILConstants.RIL_REQUEST_SET_PREFERRED_NETWORK_TYPE, response);
+
+        rr.mp.writeInt(1);
+        rr.mp.writeInt(networkType);
+
+        if (RILJ_LOGD) riljLog(rr.serialString() + "> " + requestToString(rr.mRequest)
+                + " : " + networkType);
+
+        send(rr);
+    }
+
+    @Override
+    public void setOnCatProactiveCmd(Handler h, int what, Object obj) {
+        mCatProCmdRegistrant = new Registrant (h, what, obj);
+        if (mCatProCmdBuffer != null) {
+            mCatProCmdRegistrant.notifyRegistrant(
+                                new AsyncResult (null, mCatProCmdBuffer, null));
+            mCatProCmdBuffer = null;
+        }
+    }
+
+    /* private class that does the handling for the dataconnection
+     * dataconnection is done async, so we send the request for disabling it,
+     * wait for the response, set the prefered networktype and notify the
+     * real sender with its result.
+     */
+    private class ConnectivityHandler extends Handler{
+
+        private static final int MESSAGE_SET_PREFERRED_NETWORK_TYPE = 30;
+        private Context mContext;
+        private int mDesiredNetworkType;
+        //the original message, we need it for calling back the original caller when done
+        private Message mNetworktypeResponse;
+        private ConnectivityBroadcastReceiver mConnectivityReceiver =  new ConnectivityBroadcastReceiver();
+
+        public ConnectivityHandler(Context context)
+        {
+            mContext = context;
+        }
+
+        private void startListening() {
+            IntentFilter filter = new IntentFilter();
+            filter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
+            mContext.registerReceiver(mConnectivityReceiver, filter);
+        }
+
+        private synchronized void stopListening() {
+            mContext.unregisterReceiver(mConnectivityReceiver);
+        }
+
+        public void setPreferedNetworkType(int networkType, Message response)
+        {
+            Log.d(LOG_TAG, "Mobile Dataconnection is online setting it down");
+            mDesiredNetworkType = networkType;
+            mNetworktypeResponse = response;
+            ConnectivityManager cm =
+                (ConnectivityManager)mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
+            //start listening for the connectivity change broadcast
+            startListening();
+            cm.setMobileDataEnabled(false);
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+            switch(msg.what) {
+            //networktype was set, now we can enable the dataconnection again
+            case MESSAGE_SET_PREFERRED_NETWORK_TYPE:
+                ConnectivityManager cm =
+                    (ConnectivityManager)mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+                Log.d(LOG_TAG, "preferred NetworkType set upping Mobile Dataconnection");
+
+                cm.setMobileDataEnabled(true);
+                //everything done now call back that we have set the networktype
+                AsyncResult.forMessage(mNetworktypeResponse, null, null);
+                mNetworktypeResponse.sendToTarget();
+                mNetworktypeResponse = null;
+                break;
+            default:
+                throw new RuntimeException("unexpected event not handled");
+            }
+        }
+
+        private class ConnectivityBroadcastReceiver extends BroadcastReceiver {
+
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                String action = intent.getAction();
+                if (!action.equals(ConnectivityManager.CONNECTIVITY_ACTION)) {
+                    Log.w(LOG_TAG, "onReceived() called with " + intent);
+                    return;
+                }
+                boolean noConnectivity =
+                    intent.getBooleanExtra(ConnectivityManager.EXTRA_NO_CONNECTIVITY, false);
+
+                if (noConnectivity) {
+                    //Ok dataconnection is down, now set the networktype
+                    Log.w(LOG_TAG, "Mobile Dataconnection is now down setting preferred NetworkType");
+                    stopListening();
+                    sendPreferedNetworktype(mDesiredNetworkType, obtainMessage(MESSAGE_SET_PREFERRED_NETWORK_TYPE));
+                    mDesiredNetworkType = -1;
+                }
+            }
+        }
     }
 }

@@ -61,7 +61,7 @@ PRODUCT_COPY_FILES += \
 
 # Audio configuration
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/audio_policy.conf:system/etc/audio_policy.conf
+    $(LOCAL_PATH)/config/audio_policy.conf:system/etc/audio_policy.conf
 
 # Touchscreen calibration
 PRODUCT_COPY_FILES += \
@@ -114,19 +114,13 @@ PRODUCT_PACKAGES += \
     gralloc.msm7x30 \
     hwcomposer.msm7x30 \
     gps.msm7x30 \
+    lights.msm7x30 \
     power.msm7x30 \
     audio.primary.msm7x30 \
     audio_policy.msm7x30 \
-    audio_policy.conf \
     audio.a2dp.default \
-    lights.msm7x30
-
-PRODUCT_PACKAGES += \
-    libgenlock \
-    libmemalloc \
-    liboverlay \
-    libqdutils \
-    libtilerenderer
+    audio.usb.default \
+    audio.r_submix.default
 
 PRODUCT_PACKAGES += \
     libmm-omxcore \
@@ -134,13 +128,7 @@ PRODUCT_PACKAGES += \
     libOmxVenc \
     libOmxVdec \
     libstagefrighthw \
-    libI420colorconvert \
-    libOmxAacEnc \
-    libOmxAmrEnc \
-    libOmxEvrcEnc \
-    libOmxQcelp13Enc \
-    libdivxdrmdecrypt \
-    libdashplayer
+    libc2dcolorconvert
 
 PRODUCT_PACKAGES += \
     badblocks \
@@ -154,9 +142,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory \
-    hciconfig \
-    hcitool \
-    libaudioutils \
+    librpc \
     AriesParts
 
 # Kernel

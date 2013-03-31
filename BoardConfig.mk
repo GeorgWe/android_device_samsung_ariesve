@@ -26,7 +26,6 @@
 
 # Vendor stuff
 -include vendor/samsung/ariesve/BoardConfigVendor.mk
-BOARD_VENDOR := Samsung
 
 # Costum kernel header
 TARGET_SPECIFIC_HEADER_PATH := device/samsung/ariesve/include
@@ -46,6 +45,7 @@ TARGET_ARCH_VARIANT_CPU := cortex-a8
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_USE_SCORPION_BIONIC_OPTIMIZATION := true
+ARCH_ARM_HAVE_32_BYTE_CACHE_LINE := true
 
 # Screens dimension
 TARGET_SCREEN_HEIGHT := 800
@@ -71,6 +71,7 @@ BOARD_WLAN_DEVICE                := bcmdhd
 WIFI_DRIVER_MODULE_PATH          := "/lib/modules/dhd.ko"
 WIFI_DRIVER_MODULE_NAME          := "dhd"
 WIFI_DRIVER_MODULE_ARG           := "firmware_path=/vendor/firmware/fw_bcmdhd.bin nvram_path=/vendor/firmware/nvram_net.txt"
+WIFI_DRIVER_MODULE_AP_ARG        := "firmware_path=/vendor/firmware/fw_bcmdhd_apsta.bin nvram_path=/vendor/firmware/nvram_net.txt"
 WIFI_DRIVER_FW_PATH_PARAM        := "/sys/module/dhd/parameters/firmware_path"
 WIFI_DRIVER_FW_PATH_STA          := "/vendor/firmware/fw_bcmdhd.bin"
 WIFI_DRIVER_FW_PATH_AP           := "/vendor/firmware/fw_bcmdhd_apsta.bin"
@@ -78,8 +79,8 @@ WIFI_DRIVER_FW_PATH_AP           := "/vendor/firmware/fw_bcmdhd_apsta.bin"
 # BT
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
-TARGET_NEEDS_BLUETOOTH_INIT_DELAY := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/ariesve/bluetooth
+BOARD_BLUEDROID_VENDOR_CONF := device/samsung/ancora/bluetooth/vnd_ariesve.txt
 
 # RIL
 BOARD_MOBILEDATA_INTERFACE_NAME = "pdp0"
@@ -95,14 +96,12 @@ BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
 # Audio
 BOARD_HAVE_SAMSUNG_AUDIO := true
 BOARD_USES_QCOM_AUDIO_RESETALL := true
-BOARD_USES_QCOM_AUDIO_VOIPMUTE := true
 TARGET_QCOM_AUDIO_VARIANT := caf
 
 # EGL
 BOARD_EGL_CFG := device/samsung/ariesve/config/egl.cfg
 BOARD_EGL_NEEDS_LEGACY_FB := true
 USE_OPENGL_RENDERER := true
-ENABLE_WEBGL := true
 
 # Display stuff
 COMMON_GLOBAL_CFLAGS += -DHWC_REMOVE_DEPRECATED_VERSIONS=0
@@ -110,7 +109,6 @@ TARGET_NO_HW_VSYNC := false
 TARGET_USES_C2D_COMPOSITION := true
 TARGET_FORCE_CPU_UPLOAD := true
 TARGET_PROVIDES_LIBLIGHT := true
-BOARD_USE_SKIA_LCDTEXT := true
 BOARD_USE_LEGACY_TOUCHSCREEN := true
 TARGET_QCOM_DISPLAY_VARIANT := legacy
 
@@ -118,10 +116,11 @@ TARGET_QCOM_DISPLAY_VARIANT := legacy
 BOARD_NEEDS_MEMORYHEAPPMEM := true
 TARGET_USES_ION := false
 
+# Power HAL
+TARGET_PROVIDES_POWERHAL := true
+
 # Camera stuff
-COMMON_GLOBAL_CFLAGS += -DSAMSUNG_CAMERA_QCOM -DNO_UPDATE_PREVIEW
-BOARD_USES_QCOM_LEGACY_CAM_PARAMS := true
-TARGET_PROVIDES_CAMERA_HAL := true
+COMMON_GLOBAL_CFLAGS += -DSAMSUNG_CAMERA_QCOM
 USE_CAMERA_STUB := true
 BOARD_USES_LEGACY_OVERLAY := true
 BOARD_CAMERA_USE_MM_HEAP := true
@@ -132,12 +131,6 @@ COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE -DQCOM_NO_SECURE_PLAYBACK
 COMMON_GLOBAL_CFLAGS += -DBINDER_COMPAT
 BOARD_USES_QCOM_HARDWARE := true
 BOARD_VENDOR_QCOM_AMSS_VERSION := 6225
-DYNAMIC_SHARED_LIBV8SO := true
-
-# Boot animation
-TARGET_BOOTANIMATION_PRELOAD := true
-TARGET_BOOTANIMATION_TEXTURE_CACHE := false
-TARGET_BOOTANIMATION_USE_RGB565 := true
 
 # USB mounting
 BOARD_UMS_LUNFILE := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
