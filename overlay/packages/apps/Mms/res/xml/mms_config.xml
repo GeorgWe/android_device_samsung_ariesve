@@ -51,7 +51,7 @@
     <int name="maxMessageCountPerThread">5000</int>
 
     <!-- UAProf URL -->
-    <string name="uaProfUrl">http://wap.samsungmobile.com/uaprof/GT-I9001.xml</string>
+    <string name="uaProfUrl">http://wap.samsungmobile.com/uaprof/GT-I8150.xml</string>
 
     <!-- Maximum number of recipients allowed per message. Use a value of -1
          to indicate no limit. -->
@@ -63,7 +63,7 @@
     <bool name="enableMultipartSMS">true</bool>
 
     <!-- If true, the text message will be split every 160 characters.
-         If false, the text will never be split before being sent. -->
+        If false, the text will never be split before being sent. -->
     <bool name="enableSplitSMS">false</bool>
 
     <!-- If enableMultipartSMS is true and smsToMmsTextThreshold > 1, then multi-part SMS messages
@@ -81,12 +81,12 @@
          to indicate default value -->
     <int name="maxMessageTextSize">-1</int>
 
-	<!-- Hide Sprint VVM text messages. -->    
- 	<bool name="enableSprintVVM">false</bool>
+    <!-- Hide Sprint VVM text messages. -->
+    <bool name="enableSprintVVM">false</bool>
 
     <!-- User-Agent parameter used in MMS http request -->
     <!-- this is default to "Android-Mms/0.1". Override if necessary. Optional -->
-    <string name="userAgent">SAMSUNG-GT-I9001-Mms</string>
+    <string name="userAgent">SAMSUNG-GT-I8150-Mms</string>
 
     <!-- UAProf parameter tag name -->
     <!-- this is default to "x-wap-profile". Override if necessary. Optional -->
