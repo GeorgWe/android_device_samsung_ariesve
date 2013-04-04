@@ -325,8 +325,6 @@ on property:init.svc.ril-daemon=running
     start get_macaddrs
     chown bluetooth bluetooth /data/.bt.info
 
-on property:init.svc.bluetoothd=running
-    write /sys/devices/virtual/bluetooth/hci0/idle_timeout 7000
 
 on property:sys.radio.shutdown=true
     write /sys/devices/platform/rs300000a7.65536/force_sync 1
