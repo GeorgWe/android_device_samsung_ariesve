@@ -226,7 +226,6 @@ static void wrap_queue_buffer_hook(void *data, void* buffer)
             * <------------ width ------------>
             */
 
-			frame = frame - 2;
             uint8_t *buff = (uint8_t *)vaddr;
             int pos = 0;
 
@@ -235,7 +234,7 @@ static void wrap_queue_buffer_hook(void *data, void* buffer)
             {
                 pos = y * width;                
                 for (int x = 0; x < width; ++x)
-                    buff[pos + x] = frame[pos + width - x];
+                    buff[pos + x] = frame[pos + width - x - 1];
             }
 
             //swap UV plane
@@ -243,7 +242,7 @@ static void wrap_queue_buffer_hook(void *data, void* buffer)
             {
                 pos += width;
                 for (int x = 0; x < width; ++x)
-                    buff[pos + x] = frame[pos + width - x];
+                    buff[pos + x] = frame[pos + width - x - 2];
             }
         } else
             memcpy(vaddr, frame, width * height * 3 / 2);
@@ -1023,7 +1022,7 @@ done:
  */
 
 void sighandle(int s){
-	
+
 }
 
 int camera_device_open(const hw_module_t* module, const char* name,
@@ -1173,7 +1172,7 @@ int camera_get_camera_info(int camera_id, struct camera_info *info)
 
     return rv;
 }
-	
+
 extern "C" {
 #include "exif/jhead.h"
 }
