@@ -183,8 +183,4 @@
         <item>150</item>
         <item>255</item>
     </integer-array>
-
-    <!-- Flag indicating whether we should enable automatic brightness for
-         the button and keyboard backlights. -->
-    <bool name="config_autoBrightnessButtonKeyboard">false</bool>
 </resources>
