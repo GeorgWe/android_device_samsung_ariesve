@@ -53,7 +53,7 @@ PRODUCT_COPY_FILES += \
 
 # Recovery stuff
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/ramdisk/init.qcom.usb.rc:recovery/root/usb.rc
+     $(LOCAL_PATH)/recovery/usb.rc:recovery/root/usb.rc
 
 # BT stuff
 PRODUCT_COPY_FILES += \
