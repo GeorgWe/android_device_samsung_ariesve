@@ -53,7 +53,8 @@ PRODUCT_COPY_FILES += \
 
 # Recovery stuff
 PRODUCT_COPY_FILES += \
-     $(LOCAL_PATH)/recovery/usb.rc:recovery/root/usb.rc
+     $(LOCAL_PATH)/recovery/usb.rc:recovery/root/usb.rc \
+     $(LOCAL_PATH)/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh
 
 # BT stuff
 PRODUCT_COPY_FILES += \
