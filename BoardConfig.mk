@@ -132,8 +132,11 @@ ENABLE_WEBGL := true
 BOARD_USES_QCOM_HARDWARE := true
 BOARD_VENDOR_QCOM_AMSS_VERSION := 6225
 
-# USB mounting
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/usb_mass_storage/lun%d/file
+# USB mass storage
+# Use this value to get the USB mounting in the recovery 
+# which uses the 2.6 kernel because of the emmc brick bug
+# TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/usb_mass_storage/lun%d/file
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
 
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 5242880
