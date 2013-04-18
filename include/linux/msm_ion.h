@@ -839,7 +839,6 @@ struct ion_flag_data {
  * Gets the flags of the current handle which indicate cachability,
  * secure state etc.
  */
-
 #define ION_IOC_GET_FLAGS		_IOWR(ION_IOC_MAGIC, 10, \
 						struct ion_flag_data)
 #endif /* _LINUX_ION_H */
