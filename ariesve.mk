@@ -120,7 +120,9 @@ PRODUCT_PACKAGES += \
     audio.primary.msm7x30 \
     audio_policy.msm7x30 \
     audio.a2dp.default \
-    audio.usb.default
+    audio.usb.default \
+    libaudio-resampler \
+    libaudioparameter
 
 PRODUCT_PACKAGES += \
     libmm-omxcore \
@@ -142,7 +144,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory \
-    librpc \
+    libnetcmdiface \
     AriesParts
 
 # Kernel
@@ -157,8 +159,12 @@ PRODUCT_COPY_FILES += \
 
 # Modules
 PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilt/cifs.ko:root/lib/modules/cifs.ko \
     $(LOCAL_PATH)/prebuilt/dhd.ko:root/lib/modules/dhd.ko \
-    $(LOCAL_PATH)/prebuilt/cifs.ko:root/lib/modules/cifs.ko
+    $(LOCAL_PATH)/prebuilt/scsi_wait_scan.ko:root/lib/modules/scsi_wait_scan.ko \
+    $(LOCAL_PATH)/prebuilt/cifs.ko:system/lib/modules/cifs.ko \
+    $(LOCAL_PATH)/prebuilt/dhd.ko:system/lib/modules/dhd.ko \
+    $(LOCAL_PATH)/prebuilt/scsi_wait_scan.ko:system/lib/modules/scsi_wait_scan.ko
 
 # Build properties
 ADDITIONAL_DEFAULT_PROPERTIES += \
