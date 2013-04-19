@@ -93,7 +93,7 @@
         -->
         <EncoderProfile quality="720p" fileFormat="mp4" duration="30">
             <Video codec="h264"
-                   bitRate="10000000"
+                   bitRate="6000000"
                    width="1280"
                    height="720"
                    frameRate="30" />
@@ -182,7 +182,7 @@
                    bitRate="1000000"
                    width="640"
                    height="480"
-                   frameRate="30" />
+                   frameRate="15" />
            <Audio codec="aac"
                    bitRate="96000"
                    sampleRate="48000"
@@ -194,7 +194,7 @@
                    bitRate="256000"
                    width="176"
                    height="144"
-                   frameRate="30" />
+                   frameRate="15" />
             <Audio codec="amrnb"
                    bitRate="12200"
                    sampleRate="8000"
@@ -206,7 +206,7 @@
                    bitRate="1000000"
                    width="640"
                    height="480"
-                   frameRate="30" />
+                   frameRate="15" />
             <!-- audio setting is ignored -->
             <Audio codec="aac"
                    bitRate="96000"
@@ -219,7 +219,7 @@
                    bitRate="256000"
                    width="176"
                    height="144"
-                   frameRate="30" />
+                   frameRate="15" />
             <!-- audio setting is ignored -->
             <Audio codec="amrnb"
                    bitRate="12200"
@@ -234,7 +234,6 @@
 
     </CamcorderProfiles>
 
-
     <EncoderOutputFileFormat name="3gp" />
     <EncoderOutputFileFormat name="mp4" />
 
@@ -244,7 +243,7 @@
          or query the capabilities of the codec at all if it is disabled
     -->
     <VideoEncoderCap name="h264" enabled="true"
-        minBitRate="64000" maxBitRate="12000000"
+        minBitRate="64000" maxBitRate="3000000"
         minFrameWidth="176" maxFrameWidth="1280"
         minFrameHeight="144" maxFrameHeight="720"
         minFrameRate="15" maxFrameRate="30" />
@@ -256,14 +255,14 @@
         minFrameRate="15" maxFrameRate="30" />
 
     <VideoEncoderCap name="m4v" enabled="true"
-        minBitRate="64000" maxBitRate="12000000"
+        minBitRate="64000" maxBitRate="2000000"
         minFrameWidth="176" maxFrameWidth="1280"
         minFrameHeight="144" maxFrameHeight="720"
         minFrameRate="15" maxFrameRate="30" />
 
     <AudioEncoderCap name="aac" enabled="true"
         minBitRate="8192" maxBitRate="96000"
-        minSampleRate="8000" maxSampleRate="16000"
+        minSampleRate="8000" maxSampleRate="48000"
         minChannels="1" maxChannels="1" />
 
     <AudioEncoderCap name="amrwb" enabled="true"
@@ -276,11 +275,13 @@
         minSampleRate="8000" maxSampleRate="8000"
         minChannels="1" maxChannels="1" />
 
-
     <VideoDecoderCap name="wmv" enabled="false"/>
     <AudioDecoderCap name="wma" enabled="false"/>
-	<VideoEditorCap maxInputFrameWidth="1280" maxInputFrameHeight="720" maxOutputFrameWidth="720" maxOutputFrameHeight="480" maxPrefetchYUVFrames="3"/>
+
+    <VideoEditorCap maxInputFrameWidth="1280" maxInputFrameHeight="720" maxOutputFrameWidth="720" maxOutputFrameHeight="480" maxPrefetchYUVFrames="3"/>
+
     <ExportVideoProfile name="h263" profile="1" level="1"/>
     <ExportVideoProfile name="h264" profile="1" level="256"/>
     <ExportVideoProfile name="m4v" profile="1" level="16"/>
+
 </MediaSettings>
