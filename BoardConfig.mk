@@ -58,8 +58,7 @@ BOARD_KERNEL_PAGESIZE := 4096
 TARGET_PREBUILT_KERNEL := device/samsung/ariesve/prebuilt/zImage
 
 # WiFi
-BOARD_HAVE_SAMSUNG_WIFI          := true	
-BOARD_LEGACY_NL80211_STA_EVENTS  := true
+BOARD_HAVE_SAMSUNG_WIFI          := true
 WIFI_BAND                        := 802_11_ABG
 WPA_SUPPLICANT_VERSION           := VER_0_8_X
 BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
@@ -114,6 +113,9 @@ TARGET_QCOM_DISPLAY_VARIANT := legacy
 # Memory allocation
 BOARD_NEEDS_MEMORYHEAPPMEM := true
 TARGET_USES_ION := false
+
+# Sensors
+BOARD_USE_LEGACY_SENSORS_FUSION := false
 
 # Power HAL
 TARGET_PROVIDES_POWERHAL := true
