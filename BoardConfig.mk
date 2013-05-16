@@ -155,22 +155,27 @@ BOARD_VOLD_MAX_PARTITIONS := 28
 # Costum recovery files
 TARGET_RECOVERY_INITRC := device/samsung/ariesve/recovery/init.rc
 TARGET_RECOVERY_FSTAB := device/samsung/ariesve/recovery/recovery.fstab
+TARGET_PREBUILT_RECOVERY_KERNEL := device/samsung/ariesve/recovery/zImage
 
 # TWRP recovery stuff
 BOARD_HAS_SDCARD_INTERNAL := true
 BOARD_USES_MMCUTILS := true
 BOARD_HAS_NO_MISC_PARTITION := true
-BOARD_HAS_NO_SELECT_BUTTON := true
-DEVICE_RESOLUTION := 480x800
-TW_BRIGHTNESS_PATH := /sys/devices/platform/msm_fb.196609/leds/lcd-backlight/brightness
-TW_MAX_BRIGHTNESS := 255
-TW_CUSTOM_POWER_BUTTON := 107
-BOARD_USE_CUSTOM_RECOVERY_FONT:= \"roboto_10x18.h\"
+
 TW_INTERNAL_STORAGE_PATH := "/sdcard"
 TW_INTERNAL_STORAGE_MOUNT_POINT := "sdcard"
 TW_EXTERNAL_STORAGE_PATH := "/external_sd"
 TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
+
+BOARD_HAS_NO_SELECT_BUTTON := true
+TW_CUSTOM_POWER_BUTTON := 107
+
+DEVICE_RESOLUTION := 480x800
+TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
+
+TW_BRIGHTNESS_PATH := /sys/devices/platform/msm_fb.196609/leds/lcd-backlight/brightness
+TW_MAX_BRIGHTNESS := 255
+
 TW_NO_REBOOT_BOOTLOADER := true
 TW_HAS_DOWNLOAD_MODE := true
 TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
-TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
