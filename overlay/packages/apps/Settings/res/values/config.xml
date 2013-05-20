@@ -15,9 +15,6 @@
 -->
 
 <resources>
-    <!-- Dock Settings -->
-    <bool name="has_dock_settings">false</bool>
-
     <!-- Show Expanded Desktop preference -->
     <bool name="config_show_expandedDesktop">true</bool>
 </resources>
