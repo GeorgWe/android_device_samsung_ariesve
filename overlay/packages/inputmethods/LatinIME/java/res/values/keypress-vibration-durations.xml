@@ -2,6 +2,6 @@
 <resources>
     <string-array name="keypress_vibration_durations" translatable="false">
         <!-- Build.HARDWARE,duration_in_milliseconds -->
-        <item>qcom,40</item>
+        <item>qcom,16</item>
     </string-array>
 </resources>
