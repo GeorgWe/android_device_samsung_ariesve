@@ -127,13 +127,13 @@
 
     <!-- Vibrator pattern for a very short but reliable vibration for soft keyboard tap -->
     <integer-array name="config_keyboardTapVibePattern">
-        <item>50</item>
+        <item>30</item>
     </integer-array>
 
 
     <!-- Vibrator pattern for feedback about booting with safe mode disabled -->
     <integer-array name="config_safeModeDisabledVibePattern">
-        <item>100</item>
+        <item>60</item>
     </integer-array>
 
 
@@ -145,7 +145,7 @@
 
     <!-- Vibrator pattern for feedback about hitting a scroll barrier -->
     <integer-array name="config_scrollBarrierVibePattern">
-        <item>50</item>
+        <item>40</item>
     </integer-array>
 
 
