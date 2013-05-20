@@ -20,7 +20,7 @@ public class VibrationPreference extends DialogPreference implements OnClickList
     private static final int VALUE_DISPLAY_ID = R.id.vibration_value;
 
     private static final String FILE_PATH = "/sys/class/vibetonz/immDuty/pwmvalue_intensity";
-	
+
     private VibrationSeekBar mSeekBar = new VibrationSeekBar();
 
     private static final int MAX_VALUE = 127;
@@ -75,7 +75,7 @@ public class VibrationPreference extends DialogPreference implements OnClickList
         }
 
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
-        int value = sharedPrefs.getInt(FILE_PATH, MAX_VALUE);
+        int value = sharedPrefs.getInt(FILE_PATH, 121);
         Utils.writeValue(FILE_PATH, String.valueOf(value));
     }
 
@@ -102,7 +102,7 @@ public class VibrationPreference extends DialogPreference implements OnClickList
 
             // Read original value
             SharedPreferences sharedPreferences = getSharedPreferences();
-            mOriginal = sharedPreferences.getInt(mFilePath, MAX_VALUE);
+            mOriginal = sharedPreferences.getInt(mFilePath, 121);
 
             seekBar.setMax(MAX_VALUE);
             reset();
@@ -146,9 +146,9 @@ public class VibrationPreference extends DialogPreference implements OnClickList
         }
 
         public void resetDefault() {
-            mSeekBar.setProgress(MAX_VALUE);
-            updateValue(MAX_VALUE);
-            Utils.writeValue(FILE_PATH, String.valueOf(MAX_VALUE));
+            mSeekBar.setProgress(121);
+            updateValue(121);
+            Utils.writeValue(FILE_PATH, String.valueOf(121));
         }
     }
 

@@ -43,16 +43,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/vibration_test_title"
-                    android:width="100dp" />
+                    android:width="120dp" />
 
             <Button android:id="@+id/vibration_reset"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/button_reset_title"
-                    android:width="100dp" />
+                    android:width="120dp" />
 
         </LinearLayout>
 
     </RelativeLayout>
 </ScrollView>
+
 
