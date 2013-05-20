@@ -123,6 +123,7 @@ TARGET_PROVIDES_POWERHAL := true
 # Camera stuff
 COMMON_GLOBAL_CFLAGS += -DSAMSUNG_CAMERA_LEGACY
 USE_CAMERA_STUB := true
+BOARD_USES_QCOM_LEGACY_CAM_PARAMS := true
 BOARD_USES_LEGACY_OVERLAY := true
 BOARD_CAMERA_USE_MM_HEAP := true
 TARGET_DISABLE_ARM_PIE := true
@@ -152,7 +153,7 @@ TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 BOARD_VOLD_MAX_PARTITIONS := 28
 
-# Costum recovery files
+# Custom recovery files
 TARGET_RECOVERY_INITRC := device/samsung/ariesve/recovery/init.rc
 TARGET_RECOVERY_FSTAB := device/samsung/ariesve/recovery/recovery.fstab
 TARGET_PREBUILT_RECOVERY_KERNEL := device/samsung/ariesve/recovery/zImage
