@@ -137,8 +137,13 @@ BOARD_VENDOR_QCOM_AMSS_VERSION := 6225
 
 # USB mass storage
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
+# Enable below line if compiling for a recovery version before 6.0.1.2
+#BOARD_UMS_LUNFILE := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
+# End recovery stuff
+
 
 # Partitions
+# For the Galaxy S Plus, these are calculated from /proc/partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 5242880
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 7864320
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 545259520
