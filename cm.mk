@@ -7,6 +7,7 @@ $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 # Inherit device configuration
 $(call inherit-product, $(LOCAL_PATH)/full_ariesve.mk)
 
+# Release name
 PRODUCT_RELEASE_NAME := ariesve
 
 # Setup device configuration
