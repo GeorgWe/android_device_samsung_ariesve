@@ -94,8 +94,8 @@ BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
 # Audio
 BOARD_HAVE_SAMSUNG_AUDIO := true
 BOARD_USES_QCOM_AUDIO_RESETALL := true
-TARGET_QCOM_AUDIO_VARIANT := caf
 BOARD_USES_QCOM_AUDIO_VOIPMUTE := true
+TARGET_QCOM_AUDIO_VARIANT := caf
 
 # EGL
 BOARD_EGL_CFG := device/samsung/ariesve/config/egl.cfg
@@ -139,9 +139,8 @@ BOARD_VENDOR_QCOM_AMSS_VERSION := 6225
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
 # Enable below line if compiling for a recovery version before 6.0.1.2
 #BOARD_UMS_LUNFILE := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
-# End recovery stuff
 
-# Partitions
+# Partition sizes
 # For the Galaxy S Plus, these are calculated from /proc/partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 5242880
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 7864320
@@ -157,6 +156,7 @@ TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 BOARD_VOLD_MAX_PARTITIONS := 28
 
+# Recovery
 # Custom recovery files
 TARGET_RECOVERY_INITRC := device/samsung/ariesve/recovery/init.rc
 TARGET_RECOVERY_FSTAB := device/samsung/ariesve/recovery/recovery.fstab
@@ -164,25 +164,30 @@ TARGET_PREBUILT_RECOVERY_KERNEL := device/samsung/ariesve/recovery/zImage
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/ariesve/recovery/recovery_keys.c
 BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/ariesve/recovery/graphics.c
 
-# TWRP recovery stuff
+# Partition flags for CWM/TWRP
 BOARD_HAS_SDCARD_INTERNAL := true
 BOARD_USES_MMCUTILS := true
 BOARD_HAS_NO_MISC_PARTITION := true
 
+# TWRP mount points
 TW_INTERNAL_STORAGE_PATH := "/sdcard"
 TW_INTERNAL_STORAGE_MOUNT_POINT := "sdcard"
 TW_EXTERNAL_STORAGE_PATH := "/external_sd"
 TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
 
+# Button configuration
 BOARD_HAS_NO_SELECT_BUTTON := true
 TW_CUSTOM_POWER_BUTTON := 107
 
+# Screen configuration
 DEVICE_RESOLUTION := 480x800
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 
+# TWRP brightness settings
 TW_BRIGHTNESS_PATH := /sys/devices/platform/msm_fb.196609/leds/lcd-backlight/brightness
 TW_MAX_BRIGHTNESS := 255
 
+# Misc TWRP flags
 TW_NO_REBOOT_BOOTLOADER := true
 TW_HAS_DOWNLOAD_MODE := true
 TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
