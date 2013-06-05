@@ -27,7 +27,7 @@
 # Vendor stuff
 -include vendor/samsung/ariesve/BoardConfigVendor.mk
 
-# Costum kernel header
+# Custom kernel header
 TARGET_SPECIFIC_HEADER_PATH := device/samsung/ariesve/include
 
 # Platform
