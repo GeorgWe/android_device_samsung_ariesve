@@ -153,6 +153,9 @@
          config to 7. -->
     <integer name="config_deviceHardwareKeys">7</integer>
 
+    <!-- Ariesve Has HardwareKeys -->
+    <bool name="config_hasHardwareKeys">true</bool>
+
     <!-- Is the notification LED intrusive? Used to decide if there should be a disable option -->
     <bool name="config_intrusiveNotificationLed">true</bool>
 
@@ -253,5 +256,5 @@
         <item>1</item>
         <item>1</item>
         <item>1</item>
-    </integer-array>
+    </integer-array>    
 </resources>
