@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Galaxy S Plus-instellingen</string>
+    <string name="app_name">Geavanceerde instellingen</string>
 
     <string name="category_screen_title">Scherm</string>
     <string name="category_touchkey_title">Aanraakknoppen</string>
