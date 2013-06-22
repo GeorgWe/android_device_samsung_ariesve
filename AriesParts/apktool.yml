@@ -1,9 +1,0 @@
-version: 1.5.0.5a056e3
-apkFileName: AriesParts.apk
-isFrameworkApk: false
-usesFramework:
-  ids:
-  - 1
-sdkInfo:
-  minSdkVersion: '17'
-  targetSdkVersion: '17'
