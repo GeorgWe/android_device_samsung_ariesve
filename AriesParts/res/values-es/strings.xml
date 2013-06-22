@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Ajustes Avanzados</string>
+	
+    <string name="category_screen_title">Pantalla</string>
+    <string name="category_touchkey_title">Teclas táctiles</string>
+    <string name="backlight_title_head">Ajustes de retroiluminación</string>
+    <string name="backlight_summary_head">Ajustes de notificaciones de retroiluminación (Aplicación externa)</string>
+
+    <string name="g_sensor_title">Calibración horizontal</string>
+    <string name="g_sensor_summary">Calibra el dispositivo con el acelerómetro</string>
+    <string name="gsensor_ready">Posiciona el dispositivo en una superficie plana y toca Calibrar</string>
+    <string name="gsensor_calibrating">Calibración en curso. No mover el dispositivo. Espere...</string>
+    <string name="gsensor_nofile">Imposible encontrar el file offset. Prueba de Nuevo</string>
+    <string name="gsensor_end">Calibración completada</string>
+    <string name="gsensor_button1">Completo</string>
+    <string name="gsensor_button2">Calibrar</string>
+	
+    <string name="category_fast_charge_title">Soporte de Carga Rápida</string>
+    <string name="force_fast_charge_head">Fuerza Carga Rápida</string>
+    <string name="force_fast_charge_summary_head">Detecta los PC conectados al puerto USB como simples cargadores USB, para una inmediata carga de la bateria</string>
+
+    <string name="category_vibration_title">Vibración</string>
+    <string name="vibration_title_head">Vibración</string>
+    <string name="vibration_summary_head">Control de intensidad de la vibración</string>
+    <string name="vibration_title">Intensidad de la vibración</string>
+    <string name="vibration_test_title">Prueba</string>
+
+    <string name="button_reset_title">Restaura</string>
+</resources>
