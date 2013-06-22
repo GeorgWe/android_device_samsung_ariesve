@@ -45,7 +45,7 @@ TARGET_ARCH_VARIANT_CPU := cortex-a8
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_USE_SCORPION_BIONIC_OPTIMIZATION := true
-TARGET_USE_O2 := true 
+TARGET_USE_O3 := true 
 TARGET_GCC_VERSION := 4.6
 
 # Screens dimension
