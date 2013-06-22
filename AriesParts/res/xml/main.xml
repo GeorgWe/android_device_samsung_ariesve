@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/category_touchkey_title">
+        <ListPreference android:entries="@array/backlight_timeout_entries" android:title="@string/backlight_timeout_title_head" android:key="backlight_timeout" android:summary="@string/backlight_timeout_summary_head" android:defaultValue="1600" android:entryValues="@array/backlight_timeout_entries_values" />
+        <CheckBoxPreference android:title="@string/touchlight_status_title_head" android:key="touchlight_status" android:summary="@string/touchlight_status_summary_head" android:defaultValue="true" />
+        <Preference android:title="@string/backlight_title_head" android:key="backlight" android:summary="@string/backlight_summary_head" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/category_screen_title">
+        <Preference android:title="@string/g_sensor_title" android:key="gsensor" android:summary="@string/g_sensor_summary">
+            <intent android:action="com.cyanogenmod.settings.device.GSensor" />
+        </Preference>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/category_fast_charge_title">
+        <CheckBoxPreference android:title="@string/force_fast_charge_head" android:key="force_fast_charge" android:summary="@string/force_fast_charge_summary_head" android:defaultValue="false" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/category_vibration_title">
+        <com.cyanogenmod.settings.device.VibrationPreference android:title="@string/vibration_title_head" android:key="vibration" android:summary="@string/vibration_summary_head" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/category_pkfmanager_title">
+        <Preference android:title="@string/pkfmanager_title_head" android:key="pkfmanager" android:summary="@string/pkfmanager_summary_head" />
+    </PreferenceCategory>
+</PreferenceScreen>
