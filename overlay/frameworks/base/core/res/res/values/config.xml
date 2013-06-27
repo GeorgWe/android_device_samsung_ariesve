@@ -153,7 +153,6 @@
          config to 7. -->
     <integer name="config_deviceHardwareKeys">7</integer>
 
-    <!-- Show Expanded Desktop preference -->
     <bool name="config_hasHardwareKeys">true</bool>
 
     <!-- Is the notification LED intrusive? Used to decide if there should be a disable option -->
