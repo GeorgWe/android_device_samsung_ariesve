@@ -55,11 +55,3 @@ persist.sys.vold.switchexternal=0
 
 # Enable repeatable keys in recovery
 ro.cwm.enable_key_repeat=true
-
-# I9001 Hardware Info
-ro.device.chipset=Snapdragon
-ro.device.cpu=Qualcomm Snapdragon MSM8255T (1.400 MHz)
-ro.device.gpu=Qualcomm Adreno 205
-ro.device.rear_cam=5 Megapixel
-ro.device.front_cam=0.3 Megapixel
-ro.device.screen_res=480 x 800
