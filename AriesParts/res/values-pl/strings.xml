@@ -8,7 +8,7 @@
     <string name="touchlight_status_title_head">Podœwietlenie klawiszy przy dotykaniu ekranu</string>
     <string name="touchlight_status_summary_head">Wybierz, czy klaiwsze maj¹ siê podswietlaæ przy dotykaniu ekranu</string>
     <string name="backlight_title_head">Powiadomienia podœwietlaniem klawiszy dotykowych</string>
-    <string name="backlight_summary_head">Ustawienia podœwietlania klawiszy dotykowych po przyjœciu powiadomienia</string> (zewnêtrzna aplikacja)</string>
+    <string name="backlight_summary_head">Ustawienia podœwietlania klawiszy dotykowych po przyjœciu powiadomienia (zewnêtrzna aplikacja)</string>
 
     <string name="category_screen_title">Ekran</string>
     <string name="g_sensor_title">Pozioma kalibracja</string>
