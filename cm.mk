@@ -10,6 +10,7 @@ $(call inherit-product, $(LOCAL_PATH)/full_ariesve.mk)
 # Release name
 PRODUCT_RELEASE_NAME := ariesve
 
+# Terminal Emulator conf
 $(call inherit-product, $(LOCAL_PATH)/Term.mk)
 
 # Setup device configuration
