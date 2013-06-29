@@ -19,3 +19,7 @@
 
 PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/full_ariesve.mk
+
+
+# Terminal Emulator Conf
+$(call inherit-product, $(LOCAL_PATH)/Term.mk)
