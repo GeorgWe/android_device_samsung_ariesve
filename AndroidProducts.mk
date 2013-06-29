@@ -18,5 +18,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/full_ariesve.mk \
-    $(LOCAL_DIR)/Term.mk
+    $(LOCAL_DIR)/full_ariesve.mk
