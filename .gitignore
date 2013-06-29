@@ -2,7 +2,6 @@
 .classpath
 .project
 .settings
-*.apk
 *.ap_
 *.dex
 *.class
