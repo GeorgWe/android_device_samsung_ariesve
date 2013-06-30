@@ -144,6 +144,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory \
     libnetcmdiface \
+    PhotoTable \
     AriesParts
 
 # Kernel
@@ -171,6 +172,9 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
 
 # We have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
+
+# Dalvik Heap
+$(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
 
 # WiFi
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4329/device-bcm.mk)
