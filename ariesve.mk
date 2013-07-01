@@ -145,6 +145,8 @@ PRODUCT_PACKAGES += \
     com.android.future.usb.accessory \
     libnetcmdiface \
     PhotoTable \
+    Apollo \
+    CMFileManager \
     AriesParts
 
 # Kernel
