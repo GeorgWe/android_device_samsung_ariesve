@@ -147,6 +147,7 @@ PRODUCT_PACKAGES += \
     PhotoTable \
     Apollo \
     CMFileManager \
+    SunBeam \
     AriesParts
 
 # Kernel
