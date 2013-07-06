@@ -145,6 +145,7 @@ PRODUCT_PACKAGES += \
     com.android.future.usb.accessory \
     libnetcmdiface \
     PhotoTable \
+    SunBeam \
     AriesParts
 
 # Kernel
