@@ -1,12 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013 The CyanogenMod Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
 <resources>
     <string name="app_name">Erweiterte Einstellungen</string>
 
-    <string name="category_touchkey_title">Touch Tasten</string>
+    <string name="category_touchkey_title">Touch Keys</string>
     <string name="backlight_timeout_title_head">Hintergrundbeleuchtung</string>
-    <string name="backlight_timeout_summary_head">Die Verzögerung der Hintergrundbeleuchtung der Touch Tasten anpassen</string>
-    <string name="touchlight_status_title_head">Touchscreen Berührung</string>
-    <string name="touchlight_status_summary_head">Aktivieren der Touch Tasten Hintergrundbeleuchtung bei Berührung des Touchscreens</string>
+    <string name="backlight_timeout_summary_head">Verzögerung der Hintergrundbeleuchtung der Touch Keys einstellen</string>
+    <string name="touchlight_status_title_head">Hintergrundbeleuchtung bei Touchscreenberührung</string>
+    <string name="touchlight_status_summary_head">(De-)Aktivieren der Touch Key Hintergrundbeleuchtung bei Berührung des Touchscreens</string>
     <string name="backlight_title_head">BLN</string>
     <string name="backlight_summary_head">Backlight Notification Einstellungen (externe App)</string>
 
@@ -15,14 +29,14 @@
     <string name="g_sensor_summary">Horizontale Kalibrierung mit Accelerometer</string>
     <string name="gsensor_ready">Platziere das Gerät auf einer flachen Ebene und drücke "Kalibrieren"</string>
     <string name="gsensor_calibrating">Kalibriere. Gerät nicht bewegen. Bitte warten...</string>
-    <string name="gsensor_nofile">Offset Datei nicht gefunden. Erneut versuchen</string>
+    <string name="gsensor_nofile">Offset-Datei nicht gefunden. Erneut versuchen</string>
     <string name="gsensor_end">Kalibriert</string>
     <string name="gsensor_button1">Fertig</string>
     <string name="gsensor_button2">Kalibrieren</string>
 
     <string name="category_fast_charge_title">Ladeeinstellungen</string>
     <string name="force_fast_charge_head">Schnelles Laden</string>
-    <string name="force_fast_charge_summary_head">Erkenne den über USB angeschlossenen PC als Aufladestecker, um schneller zu laden</string>
+    <string name="force_fast_charge_summary_head">Den über USB angeschlossenen PC als Aufladestecker erkennen, um schneller zu laden</string>
 
     <string name="category_vibration_title">Vibrationseinstellungen</string>
     <string name="vibration_title_head">Vibration</string>
@@ -33,6 +47,6 @@
     <string name="button_reset_title">Reset</string>
 
     <string name="category_pkfmanager_title">Phantom Tastendrücke</string>
-    <string name="pkfmanager_title_head">Phantom Tastendrücke Filter</string>
-    <string name="pkfmanager_summary_head">Filtere Tasteneingaben, die durch die Interferenz der Antenne verursacht werden (externe App)</string>
+    <string name="pkfmanager_title_head">Phantom Tastendrückefilter</string>
+    <string name="pkfmanager_summary_head">Filtert durch die Interferenz der Antenne verursachte Tastatureingaben (externe App)</string>
 </resources>
