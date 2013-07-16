@@ -156,12 +156,6 @@
     <!-- Is the notification LED intrusive? Used to decide if there should be a disable option -->
     <bool name="config_intrusiveNotificationLed">true</bool>
 
-    <!-- Boolean to enable Stylus gestures -->
-    <bool name="config_stylusGestures">true</bool>
-
-    <!-- Device has a h/w rotation lock switch -->
-    <bool name="config_hasRotationLockSwitch">true</bool>
-
 
 <!--SCREEN & BRIGHTNESS-->
     <!-- If this is true, the screen will fade off. -->
