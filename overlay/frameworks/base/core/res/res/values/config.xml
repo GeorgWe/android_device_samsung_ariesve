@@ -33,6 +33,12 @@
     <!-- Boolean to enable stk functionality on Samsung phones -->
     <bool name="config_samsung_stk">true</bool>
 
+    <!-- Diable lockscreen rotation by default -->
+    <bool name="config_enableLockScreenRotation">true</bool>
+
+    <!-- Boolean to enable Stylus gestures -->
+    <bool name="config_stylusGestures">true</bool>
+
 
 <!--COMMUNICATION-->
     <!-- This string array should be overridden by the device to present a list of network
@@ -155,6 +161,9 @@
 
     <!-- Is the notification LED intrusive? Used to decide if there should be a disable option -->
     <bool name="config_intrusiveNotificationLed">true</bool>
+
+    <!--  Maximum number of supported users -->
+    <integer name="config_multiuserMaximumUsers">2</integer>
 
 
 <!--SCREEN & BRIGHTNESS-->
