@@ -41,15 +41,4 @@
             <intent android:action="com.cyanogenmod.settings.device.GSensor" />
         </Preference>
     </PreferenceCategory>
-
-    <!-- Fsync -->
-    <PreferenceCategory android:title="@string/fsync_subcat_title" >
-        <com.cyanogenmod.settings.device.FsyncMode
-            android:defaultValue="2"
-            android:entries="@array/fsync_mode_entries"
-            android:entryValues="@array/fsync_mode_entries_values"
-            android:key="fsync_mode"
-            android:summary="@string/fsync_summary_head"
-            android:title="@string/fsync_title_head" />
-    </PreferenceCategory>
 </PreferenceScreen>
