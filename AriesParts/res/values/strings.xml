@@ -43,10 +43,6 @@
 
     <string name="button_reset_title">Reset</string>
 
-    <string name="fsync_subcat_title">FSync</string>
-    <string name="fsync_title_head">FSync mode</string>
-    <string name="fsync_summary_head">Disabling fsync can improve IO performace, but it may cause data corruption. Dynamic fsync will sync all buffers when screen turns off.</string>
-
     <!-- Page TouchKey -->
     <string name="category_touchkey_title">Touch Keys</string>
     <string name="backlight_timeout_title_head">Backlight Timeout</string>

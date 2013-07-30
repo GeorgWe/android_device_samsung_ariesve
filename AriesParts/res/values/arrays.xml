@@ -31,15 +31,4 @@
         <item>5000</item>
         <item>-1</item>
     </string-array>
-
-    <string-array name="fsync_mode_entries">
-        <item>Enabled</item>
-        <item>Disabled</item>
-        <item>Dynamic</item>
-    </string-array>
-    <string-array name="fsync_mode_entries_values" translatable="false">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-    </string-array>
 </resources>
