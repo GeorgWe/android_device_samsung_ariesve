@@ -22,9 +22,4 @@
         <item>5 secondi</item>
         <item>Mai</item>
     </string-array>
-    <string-array name="fsync_mode_entries">
-        <item>Abilitato</item>
-        <item>Disabilitato</item>
-        <item>Dinamico</item>
-    </string-array>
 </resources>
