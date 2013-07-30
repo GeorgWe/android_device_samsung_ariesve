@@ -43,10 +43,6 @@
 
     <string name="button_reset_title">Ripristina</string>
 
-    <string name="fsync_subcat_title">FSync</string>
-    <string name="fsync_title_head">Modalità FSync</string>
-    <string name="fsync_summary_head">Disabilitando Fsync puoi migliorare le performace I/O, ma potrebbe causare la corruzione dei dati. L\'Fsync dinamico sincronizzerà i buffer quando lo schermo si spegnerà.</string>
-
     <!-- Page TouchKey -->
     <string name="category_touchkey_title">Tasti a sfioramento</string>
     <string name="backlight_timeout_title_head">Timer retroilluminazione</string>
